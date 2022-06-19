@@ -1,1 +1,1 @@
-web: gunicorn operaireland.wsgi
+web: gunicorn opera-ireland.wsgi
