@@ -4,11 +4,13 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
+/* Sign-in Page */
 .text-panel {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
+/* Navbar and Footer */
 .main-navbar {
     font-size: 1.2rem;
     font-weight: 100;
@@ -20,4 +22,15 @@ footer {
     font-size: .75rem;
     height: 50px;
     padding-top: 20px;
+}
+
+/* Profile Styles */
+.avatar {
+    border: 1px solid rgb(109, 109, 109);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-avatar {
+    width: 85%;
 }

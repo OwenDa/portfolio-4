@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Profile Header-->
+<section class="container py-4">
+    <div class="row align-items-center mb-2">
+        <div class="col-4 col-md-3">
+            <img src="../static/images/Unknown_person.jpg" class="profile-avatar avatar mx-2" aria-describedby="user-full-name">
+        </div>
+        <div class="col-8 col-md-9">
+            <div class="row">
+                <div class="col-12">
+                    <h2 id="user-full-name">Firstname Lastname</h2>    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p>User Role/Voice</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
