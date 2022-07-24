@@ -4,13 +4,13 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
-/* Sign-in Page */
+/* SIGN-IN PAGE */
 .text-panel {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-/* Navbar and Footer */
+/* NAVBAR & FOOTER */
 .main-navbar {
     font-size: 1.2rem;
     font-weight: 100;
@@ -24,7 +24,13 @@ footer {
     padding-top: 20px;
 }
 
-/* Profile Styles */
+/* HEADINGS */
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* PROFILE STYLES */
 .avatar {
     border: 1px solid rgb(109, 109, 109);
     border-radius: 50%;
@@ -33,4 +39,44 @@ footer {
 
 .profile-avatar {
     width: 85%;
+}
+
+/* HISTORY */
+
+.history-item {
+    padding: 4em 2em 0em 2em;
+    position: relative;
+    color: #000000;
+    border-left: 1px solid;
+}
+
+.history-item p {
+    /* e.g. role */
+    margin: 0;
+    padding: 0;
+}
+
+.history-item-year {
+    color: #b21a7f;
+    position: absolute;
+    left: 2.5em;
+    top: 3em;
+    display: block;
+    font-weight: 500;
+    font-size: .8em;
+    margin: 0;
+    padding: 0;
+}
+
+.history-item::after {
+    /* history-item year dot */
+    content: '';
+    width: 14px;
+    height: 14px;
+    display: block;
+    top: 2.5em;
+    position: absolute;
+    left: -7px;
+    border-radius: 50%;
+    background: #b21a7f;
 }
