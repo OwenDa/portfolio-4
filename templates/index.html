@@ -2,5 +2,33 @@
 {% load static %}
 
 {% block content %}
-
+<section class="container">
+<!-- Post Template: -->
+    <div class="card mt-4 mb-2 shadow rounded">
+        <!-- ROW 1 -->
+        <div class="card-header px-2">
+            <h5>
+                <img src="../static/images/default-user.jpg" class="post-avatar avatar" aria-labelledby="post-user-full-name">
+                <a href="#" id="post-user-full-name">Firstname Lastname</a>
+            </h5>
+        </div>
+        <!-- ROW 2 (Image in post, if any) -->
+        <img class="card-img-top" src="" alt="" id="post-image">
+        <!-- ROW 3 (Post date and written content) -->
+        <div class="card-body">
+            <p class="text-right" id="post-date">xx/xx/xxxx</p>
+            <p class="card-text" id="post-text">Written post content goes here. Written post content goes here. Written post content goes here. Written post content goes here. Written post content goes here. Written post content goes here.</p>
+            <div class="card-footer">
+                <div class="row justify-content-between">
+                    <div class="col-4 col-md-4">Like</div>
+                    <div class="col-6 col-md-4 text-center px-0">Comments</div>
+                    <div class="col-2 col-md-4 text-right"><i class="fas fa-chevron-down"></i>
+                    <!-- Options may include:
+                    share, edit, delete, disable comments, bookmark/save -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End of post template: -->
+</section>
 {% endblock content %}

@@ -41,7 +41,7 @@ h3 {
     width: 85%;
 }
 
-/* HISTORY */
+/* Profile: History*/
 
 .history-item {
     padding: 4em 2em 0em 2em;
@@ -79,4 +79,11 @@ h3 {
     left: -7px;
     border-radius: 50%;
     background: #b21a7f;
+}
+
+/* POST STYLES */
+
+.post-avatar {
+    width: 18%;
+    margin-right: 2px;
 }
