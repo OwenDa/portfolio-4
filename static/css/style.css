@@ -9,9 +9,10 @@ body {
     padding-bottom: 1rem;
 }
 
-#mainNavbar {
-    font-size: 1.5rem;
+.main-navbar {
+    font-size: 1.2rem;
     font-weight: 100;
+    text-transform: uppercase;
 }
 
 footer {

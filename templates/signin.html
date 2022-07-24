@@ -14,7 +14,7 @@
 <body>
     <!-- Navigation -->
     <div class="container-fluid">
-        <nav class="navbar navbar-light navbar-expand-md py-0 bg-light fixed-top text-uppercase">
+        <nav class="navbar navbar-light navbar-expand-md py-0 bg-light fixed-top main-navbar">
             <h1><a href="#" class="navbar-brand">Opera Ireland</a></h1>
             <!-- Nav Toggler -->
             <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-links" aria-label="Toggle Navigation Menu">
@@ -41,6 +41,7 @@
                 <div class="row align-items-center">
                     <div class="col-10 offset-1">
                         <form action="" method="">
+                            {% csrf_token %}
                             <div class="form-group">
                               <label for="username">Username: </label>
                               <input type="text" class="form-control" id="username" placeholder="Enter username" required>
