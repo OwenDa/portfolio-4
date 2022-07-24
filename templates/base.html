@@ -32,6 +32,21 @@
         </nav>
     </div>
 
+    <!-- Search bar -->
+    <section class="container-fluid mt-2">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-10 col-md-6">
+                <form action="/search" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group mb-1 mt-1">
+                        <input type="text" class="form-control" placeholder="Search users..." aria-label="Search users by name" aria-describedby="search-button">
+                        <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Content -->
     {% block content %}
     <!-- Content -->
