@@ -13,3 +13,10 @@ body {
     font-size: 1.5rem;
     font-weight: 100;
 }
+
+footer {
+    color: #474646;
+    font-size: .75rem;
+    height: 50px;
+    padding-top: 20px;
+}
