@@ -43,7 +43,7 @@
     <!-- HISTORY -->
     <section class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-5 order-2 order-md-1">
                 <div class="row">
                     <div class="col-12">
                         <h3 class="mb-3 text-uppercase">
@@ -67,8 +67,27 @@
                     </div>
                 </div>
             </div>
-            <!-- temp. closing tag, pick up from here: -->
-            <!-- BIO & POSTS -->
+            <div class="col-12 col-md-7 order-1 order-md-2">
+                <div class="container-fluid">
+                    <!-- Bio -->
+                    <div class="row">
+                        <h3 class="mb-3 text-uppercase">Bio</h3>
+                    </div>
+                    <div class="row">
+                        <p>Content here.</p>
+                    </div>
+                    <!-- Posts -->
+                    <div class="row">
+                        <h3 class="mb-3 text-uppercase">
+                        Posts
+                        </h3>
+                    </div>
+                    <div class="row">
+                        <!-- if posts: for post in posts: -->
+                        Content here.
+                    </div>
+                </div>
+            </div>
         </div>
-</section>
+    </section>
 {% endblock content %}
