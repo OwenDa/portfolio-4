@@ -1,5 +1,44 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-hello
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h2><a href="#">Home</a> / Settings</h2>
+                <h3>Firstname Lastname</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="col-12">
+        <div>
+            <h3 class="mb-2">General</h3>
+        </div>
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <form action="" method="POST" enctype="multipart/form-data">
+                % csrf_token %
+                <div class="row px-3">
+                    <div class="col-12 col-md-6 justify-content-center px-0">
+                        <div class="col-12 mb-1">
+                            <label for="avatar-upload">Profile Image</label>
+                            <img width="100" height="100" src="../static/images/default-user.jpg"/>
+                        </div>
+                        <div class="col-12">
+                            <input type="file" name="image" id="avatar-upload" value="">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 justify-content-center px-0">
+                        <div class="col-12 mb-1">
+                            <label for="bio">Bio</label>
+                        </div>
+                        <div class="col-12 mb-1">
+                            <textarea id="bio" name="bio" rows="4"
+                            class="shadow-none bg-gray-100">Profile Bio Content.</textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
