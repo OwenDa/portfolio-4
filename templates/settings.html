@@ -9,14 +9,73 @@
             <hr>
         </div>
     </div>
-    <!-- Profile Settings -->
+    <!-- Your Details -->
     <div class="col-12">
         <div>
-            <h3 class="mb-2">Profile</h3>
+            <h3 class="mb-2">Your Details</h3>
         </div>
         <div class="shadow p-3 mb-4 bg-white rounded">
             <form action="" method="POST" enctype="multipart/form-data">
-                % csrf_token %
+                {% csrf_token %}
+                <div class="row px-3">
+                    <div class="col-12 col-md-6 justify-content-center px-0">
+                        <div class="col-12 mb-2">
+                            <label for="first-name">First Name</label>
+                            <input type="text" name="first-name" id="first-name" value="{#}">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" name="last-name" id="last-name" value="{#}">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 justify-content-center px-0">
+                        <div class="col-12 mb-2">
+                            <label for="username">Userame</label>
+                            <input type="text" name="username" id="username" value="{#}">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <p id="profile-url" >Your url:  www.site.com/<strong>{username}</strong></p>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="col-12 col-md-6 justify-content-center px-0"> -->
+                        <!-- role selection: may remove. Unlikely to change post-registration -->
+                        <!-- <div class="col-12 mb-1">
+                            <label for="role">Role</label>
+                        </div>
+                        <div class="col-12 mb-1">
+                            <select id="role" name="role" id="role" value="{--}">
+                                <option disabled selected value> -- select an option -- </option>
+                                <optgroup label="Vocal Performer:">
+                                    <option value="soprano">Soprano</option>
+                                    <option value="mezzo-soprano">Mezzo-Soprano</option>
+                                    <option value="contralto">Contralto</option>
+                                    <option value="tenor">Tenor</option>
+                                    <option value="baritone">Baritone</option>
+                                    <option value="bass">Bass</option>
+                                </optgroup>
+                                <optgroup label="Other:">
+                                    <option value="non-vocal-performer">Non-Vocal Performer</option>
+                                    <option value="non-performer">Non-performer</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div> end of role selection -->
+                </div>
+                <!-- save/cancel -->
+            </form>
+        </div>
+    </div> <!-- end of 'your details' -->
+    <!-- Profile Basics -->
+    <div class="col-12">
+        <div>
+            <h3 class="mb-2">Profile Basics</h3>
+        </div>
+        <div class="shadow p-3 mb-4 bg-white rounded">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row px-3">
                     <div class="col-12 col-md-6 justify-content-center px-0">
                         <div class="col-12 mb-1">
@@ -33,13 +92,17 @@
                             <label for="bio">Bio</label>
                         </div>
                         <div class="col-12 mb-1">
-                            <textarea id="bio" name="bio" rows="4"
-                            class="shadow-none bg-gray-100">Profile Bio Content.</textarea>
+                            <textarea id="bio" name="bio" rows="4">Profile Bio Content.</textarea>
                         </div>
                     </div>
                 </div>
+                <!-- social links -->
+                <!-- save/cancel -->
             </form>
         </div>
-    </div>
+    </div> <!-- end of profile basics -->
+    <!-- history section -->
+    <!-- save/cancel -->
+    <!-- history section -->
 </div>
 {% endblock content %}
