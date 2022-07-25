@@ -87,3 +87,9 @@ h3 {
     width: 18%;
     margin-right: 2px;
 }
+
+/* SETTINGS STYLES */
+
+#avatar-upload {
+    max-width: 100%;
+    }
