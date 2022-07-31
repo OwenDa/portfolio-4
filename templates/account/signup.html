@@ -1,11 +1,20 @@
-{% extends "account/base.html" %}
-
+{% extends "base.html" %}
+{% load static %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Sign Up" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+<!-- Log in -->
+<section class="container-fluid">
+  <div class="row align-items-center">
+    <!-- Form Panel-->
+    <div class="col-md-6 order-1 order-md-2 text-panel">
+      <div class="row align-items-center justify-content-center">
+        <h2>{% trans "Sign up" %}</h2>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-10 offset-1">
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
@@ -17,5 +26,34 @@
   {% endif %}
   <button type="submit">{% trans "Sign Up" %} &raquo;</button>
 </form>
+
+</div>
+</div>
+</div>
+<!-- Image Panel -->
+<div class="col-md-6 px-0 order-2 order-md-1">
+<img src="{% static 'images/theatre-seats.png' %}" aria-hidden="true" class="img-fluid">
+</div>
+</div>
+
+<!-- Brief About -->
+<div class="row align-items-center">
+<!-- About Panel-->
+<div class="col-md-6 text-panel">
+<div class="row align-items-center justify-content-center">
+  <h2>About</h2>
+</div>
+<div class="row align-items-center">
+  <div class="col-10 offset-1">
+    Brief about text here.
+  </div>
+</div>
+</div>
+<!-- Image Panel-->
+<div class="col-md-6 px-0">
+<img src="{% static '/images/cast-reading.jpg' %}" aria-hidden="true" class="img-fluid">
+</div>
+</div>
+</section>
 
 {% endblock %}
