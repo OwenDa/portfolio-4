@@ -99,3 +99,12 @@ h3 {
     word-wrap: break-word;
     overflow-wrap: break-word
 }
+
+/* MESSAGES */
+#message-div {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    margin-top: 70px;
+    width: 100%;
+}
