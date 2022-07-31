@@ -24,9 +24,15 @@
                 <!-- Nav Items -->
                 <div class="collapse navbar-collapse" id="nav-links">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-plus-square d-none d-md-inline"></i> New Post</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-cog d-none d-md-inline"></i> Settings</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-sign-out-alt d-none d-md-inline"></i> Sign Out</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-plus-square d-none d-md-inline"></i> New Post</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-cog d-none d-md-inline"></i> Settings</a></li>
+                            <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link"><i class="fas fa-sign-out-alt d-none d-md-inline"></i> Sign Out</a></li>
+                        {% else %}
+                            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                            <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">Sign In</a></li>
+                            <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a></li>
+                        {% endif %}
                     </ul>
                 </div>
         </nav>
@@ -36,6 +42,7 @@
     <section class="container-fluid mt-2">
         <div class="row justify-content-center align-items-center">
             <div class="col-10 col-md-6">
+                {% if user.is_authenticated %}
                 <form action="/search" method="POST">
                     {% csrf_token %}
                     <div class="input-group mb-1 mt-1">
@@ -43,6 +50,7 @@
                         <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
+                {% endif %}
             </div>
         </div>
     </section>
