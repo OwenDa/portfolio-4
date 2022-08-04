@@ -17,16 +17,16 @@
       <div class="row align-items-center">
         <div class="col-10 offset-1">
 
-          <p>{% blocktrans %}If you have not created an account yet, then please
-            <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+          <p>If you have not created an account yet, then please
+            <a href="{% url 'signup' %}">sign up</a> first.</p>
 
-          <form class="login" method="POST" action="{% url 'account_login' %}">
+          <form class="login" method="POST" action="{% url 'signin' %}">
             {% csrf_token %}
             {{ form.as_p }}
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
-            <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+            <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
           </form>
         </div>
       </div>
