@@ -52,7 +52,7 @@ SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGOUT_REDIRECT_URL = '/signin'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

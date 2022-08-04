@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # from cloudinary.models import CloudinaryField
 
 
-# User = get_user_model()
+User = get_user_model()
 
 
 class Profile(models.Model):
@@ -14,7 +14,7 @@ class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    iduser = models.IntegerField()
+    id_user = models.IntegerField()
     bio = models.TextField(max_length=280, blank=True)
     location = models.CharField(max_length=100, blank=True)
     avatar = models.ImageField(
