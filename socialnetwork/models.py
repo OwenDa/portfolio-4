@@ -18,7 +18,7 @@ class Profile(models.Model):
     bio = models.TextField(max_length=280, blank=True)
     location = models.CharField(max_length=100, blank=True)
     avatar = models.ImageField(
-        'image', upload_to='avatars/', default='media/default-user.jpg')
+        'image', upload_to='avatars/', default='default-user_vltu5x')
     link1 = models.CharField(max_length=255, null=True)
     link2 = models.CharField(max_length=255, null=True)
     link3 = models.CharField(max_length=255, null=True)
