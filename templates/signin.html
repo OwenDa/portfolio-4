@@ -17,15 +17,21 @@
       <div class="row align-items-center">
         <div class="col-10 offset-1">
 
-          <p>If you have not created an account yet, then please
+          <p class="mt-2">If you have not created an account yet, please
             <a href="{% url 'signup' %}">sign up</a> first.</p>
 
-          <form class="login" method="POST" action="{% url 'signin' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-            {% endif %}
+            <form action="" method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <div class="form-group col-10 justify-content-center align-items-center">
+                  <label for="username">Username: </label>
+                  <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="form-group col-10 justify-content-center align-items-center">
+                  <label for="password">Password: </label>
+                  <input type="password" class="form-control" id="password" required>
+                </div>
+            </div>
             <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
           </form>
         </div>
