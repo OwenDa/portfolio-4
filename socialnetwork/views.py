@@ -12,7 +12,9 @@ def index(request):
 
 
 def signup(request):
-    """ In development """
+    """
+    Validate user input and create user object with blank profile
+    """
     if request.method == 'POST':
         # assign form input as variables
         username = request.POST['username']
@@ -53,13 +55,15 @@ def signup(request):
 
 
 def signin(request):
-    """ Sign in """
+    """ Sign in - not currently functioning """
     return render(request, 'signin.html')
 
 
+@login_required(login_url='signin')
 def signout(request):
-    """ Sign out """
-    return render(request, 'signout.html')
+    """ Sign user out and redirect to signin page """
+    auth.logout(request)
+    return redirect('signin')
 
 
 def profile(request):
