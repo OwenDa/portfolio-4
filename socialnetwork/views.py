@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile
 
 
+@login_required(login_url='signin')
 def index(request):
     """ View to render index """
     return render(request, 'index.html')
@@ -56,7 +57,20 @@ def signup(request):
 
 def signin(request):
     """ Sign in - not currently functioning """
-    return render(request, 'signin.html')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect('index')
+        else:
+            messages.info(request, 'Invalid Username or Password')
+            return redirect('signin')
+    else:
+        return render(request, 'signin.html')
 
 
 @login_required(login_url='signin')
