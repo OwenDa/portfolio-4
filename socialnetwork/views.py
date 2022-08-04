@@ -80,14 +80,26 @@ def signout(request):
     return redirect('signin')
 
 
-def profile(request):
-    """ View to render profile.html template as it stands """
-    return render(request, 'profile.html')
+def profile(request, pk):
+    """
+    View to render profile.html/ per user,
+    based on primary key (pk), see urls.py
+    """
+    user_object = User.objects.get(username=pk)
+    # create variable 'user_object' by getting the user (object from Users db)
+    # where username is equal to the pk passed in (ie. that used in the url)
+    user_profile = Profile.objects.get(user=user_object)
+    # create variable 'user_profile' by getting the profile (object from
+    # Profile db) in which the user is equal to the user_object variable above.
+    # In effect, user_profile now refers to the profile for the pk passed in.
+    context = {'user_object': user_object, 'user_profile': user_profile}
+    # returning multiple variables, so using a context to bundle together.
+    return render(request, 'profile.html', context)
 
 
 @login_required(login_url='signin')
 def settings(request):
-    """ In development """
+    """ Functions as profile edit page """
     user_profile = Profile.objects.get(user=request.user)
     # create variable user_profile to include all objects
     # in the current user's profile

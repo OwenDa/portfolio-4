@@ -18,7 +18,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('profile/', views.profile, name='profile'),
+    path('profile/<str:pk>', views.profile, name='profile'),
+    # profile/primary-key as string, see views.py for more
     path('settings/', views.settings, name='settings'),
     path('signup', views.signup, name='signup'),
     path('signin', views.signin, name='signin'),
