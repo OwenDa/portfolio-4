@@ -9,7 +9,7 @@
     <div class="row">
         <div class="scol-12">
             <h2><a href="{% url 'index' %}">Home</a> / Settings</h2>
-                <h3>{{user.profile.first_name}} {{user.profile.last_name}}</h3>
+                <h3>{{user_profile.first_name}} {{user_profile.last_name}}</h3>
             <hr>
         </div>
     </div>
@@ -25,11 +25,11 @@
                     <div class="col-12 col-md-6 justify-content-center px-0">
                         <div class="col-12 mb-2">
                             <label for="first-name">First Name</label>
-                            <input type="text" name="first_name" id="first-name" value="{{user.profile.first_name}}">
+                            <input type="text" name="first_name" id="first-name" value="{{user_profile.first_name}}">
                         </div>
                         <div class="col-12 mb-2">
                             <label for="last-name">Last Name</label>
-                            <input type="text" name="last_name" id="last-name" value="{{user.profile.last_name}}">
+                            <input type="text" name="last_name" id="last-name" value="{{user_profile.last_name}}">
                         </div>
                     </div>
 
@@ -46,16 +46,16 @@
 
                     <div class="col-12 col-md-6 justify-content-center px-0 mb-2">
                             <label for="location">Location</label>
-                            <input type="text" name="location" id="location" value="{{user.profile.location}}">
+                            <input type="text" name="location" id="location" value="{{user_profile.location}}">
                     </div>
 
                     <div class="col-12 col-md-6 justify-content-center px-0 mb-2">
                         <label for="link1">Link:</label>
-                        <input type="text" name="link1" id="link1" value="{{user.profile.link1}}">
+                        <input type="text" name="link1" id="link1" value="{{user_profile.link1}}">
                         <label for="link2">Link:</label>
-                        <input type="text" name="link2" id="link2" value="{{user.profile.link2}}">
+                        <input type="text" name="link2" id="link2" value="{{user_profile.link2}}">
                         <label for="link1">Link:</label>
-                        <input type="text" name="link3" id="link3" value="{{user.profile.link3}}">
+                        <input type="text" name="link3" id="link3" value="{{user_profile.link3}}">
                     </div>
 
                     <!-- <div class="col-12 col-md-6 justify-content-center px-0"> -->
@@ -90,16 +90,15 @@
                 <h3 class="mb-2">Profile Basics</h3>
             </div>
             <div class="shadow p-3 mb-4 bg-white rounded">
-                <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row px-3">
                         <div class="col-12 col-md-6 justify-content-center px-0">
                             <div class="col-12 mb-1">
                                 <label for="avatar-upload">Profile Image</label>
-                                <img width="100" height="100" src="{{ user.profile.avatar.url }}"/>
+                                <img width="100" height="100" src="{{ user_profile.avatar.url }}"/>
                             </div>
                             <div class="col-12">
-                                <input type="file" name="image" id="avatar-upload" value="">
+                                <input type="file" name="avatar" id="avatar-upload" value="">
                             </div>
                         </div>
 
@@ -108,13 +107,12 @@
                                 <label for="bio">Bio</label>
                             </div>
                             <div class="col-12 mb-1">
-                                <textarea id="bio" name="bio" rows="4">{{user.profile.bio}}</textarea>
+                                <textarea id="bio" name="bio" rows="4">{{user_profile.bio}}</textarea>
                             </div>
                         </div>
                     </div>
                     <!-- social links -->
                     <!-- save/cancel -->
-                </form>
             </div>
         </div> <!-- end of profile basics -->
         <!-- history section -->

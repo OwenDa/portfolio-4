@@ -56,7 +56,7 @@ def signup(request):
 
 
 def signin(request):
-    """ Sign in - not currently functioning """
+    """ Sign in """
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -88,6 +88,42 @@ def profile(request):
 @login_required(login_url='signin')
 def settings(request):
     """ In development """
-    # user_profile = Profile.objects.get(user=request.user_object)
-    # return render(request, 'settings.html', {'user_profile': user_profile})
-    return render(request, 'settings.html')
+    user_profile = Profile.objects.get(user=request.user)
+    # create variable user_profile to include all objects
+    # in the current user's profile
+
+    if request.method == 'POST':
+
+        if request.FILES.get('avatar') is None:
+            # if no image being submitted
+            avatar = user_profile.avatar
+            # create variable 'avatar' set equal to current avatar
+        else:
+            avatar = request.FILES.get('avatar')
+            # otherwise, get submitted image assign to variable 'avatar'
+
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        bio = request.POST['bio']
+        location = request.POST['location']
+        link1 = request.POST['link1']
+        link2 = request.POST['link2']
+        link3 = request.POST['link3']
+        # create variables equal to form fields (name attr)
+
+        user_profile.avatar = avatar
+        user_profile.first_name = first_name
+        user_profile.last_name = last_name
+        user_profile.bio = bio
+        user_profile.location = location
+        user_profile.link1 = link1
+        user_profile.link1 = link2
+        user_profile.link1 = link3
+        # set user's profile object properties equal to variables
+
+        user_profile.save()
+        # save profile object
+        return redirect('settings')
+        # return to settings url which will display as below:
+    return render(request, 'settings.html', {'user_profile': user_profile})
+    # if method is not POST, display settings with user profile context
