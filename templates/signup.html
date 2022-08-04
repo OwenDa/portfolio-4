@@ -15,47 +15,52 @@
       </div>
       <div class="row align-items-center">
         <div class="col-10 offset-1">
-
-<p>Already have an account? Then please <a href="{% url 'signin' %}">sign in</a>.</p>
-
-<form class="signup" id="signup_form" method="post" action="{% url 'signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  {{form.first_name}}
-  {{form.last_name}}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit" class="btn btn-primary">{% trans "Sign Up" %} &raquo;</button>
-</form>
-
-</div>
-</div>
-</div>
-<!-- Image Panel -->
-<div class="col-md-6 px-0 order-2 order-md-1">
-<img src="{% static 'images/theatre-seats.png' %}" aria-hidden="true" class="img-fluid">
-</div>
-</div>
-
-<!-- Brief About -->
-<div class="row align-items-center">
-<!-- About Panel-->
-<div class="col-md-6 text-panel">
-<div class="row align-items-center justify-content-center">
-  <h2>About</h2>
-</div>
-<div class="row align-items-center">
-  <div class="col-10 offset-1">
-    Brief about text here.
+          <p>Already have an account? Then please <a href="{% url 'signin' %}">sign in</a>.</p>
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+              <div class="form-group col-12 col-md-10 justify-content-center align-items-center">
+                <label for="username">Username: </label>
+                <input type="text" class="form-control" id="username" name="username" required>
+              </div>
+              <div class="form-group col-12 col-md-10 justify-content-center align-items-center">
+                <label for="password">Password: </label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <div class="form-group col-12 col-md-10 justify-content-center align-items-center">
+                <label for="password2">Confirm password: </label>
+                <input type="password" class="form-control" id="password2" name="password2" required>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Image Panel -->
+    <div class="col-md-6 px-0 order-2 order-md-1">
+      <img src="{% static 'images/theatre-seats.png' %}" aria-hidden="true" class="img-fluid">
+    </div>
   </div>
-</div>
-</div>
-<!-- Image Panel-->
-<div class="col-md-6 px-0">
-<img src="{% static '/images/cast-reading.jpg' %}" aria-hidden="true" class="img-fluid">
-</div>
-</div>
+
+  <!-- Brief About -->
+  <div class="row align-items-center">
+    <!-- About Panel-->
+    <div class="col-md-6 text-panel">
+      <div class="row align-items-center justify-content-center">
+        <h2>About</h2>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-10 offset-1">
+          Brief about text here.
+        </div>
+      </div>
+    </div>
+    <!-- Image Panel-->
+    <div class="col-md-6 px-0">
+      <img src="{% static '/images/cast-reading.jpg' %}" aria-hidden="true" class="img-fluid">
+    </div>
+  </div>
 </section>
 
 {% endblock %}
