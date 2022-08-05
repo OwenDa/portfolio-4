@@ -7,7 +7,7 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="scol-12">
+        <div class="col-12">
             <h2><a href="{% url 'index' %}">Home</a> / Settings</h2>
                 <h3>{{user_profile.first_name}} {{user_profile.last_name}}</h3>
             <hr>
@@ -32,7 +32,7 @@
                             <input type="text" name="last_name" id="last-name" value="{{user_profile.last_name}}">
                         </div>
                     </div>
-
+                    <!-- Username subsection -->
                     <div class="col-12 col-md-6 justify-content-center px-0">
                         <div class="col-12 mb-2">
                             <label for="username">Username</label>
@@ -43,27 +43,18 @@
                         </div>
                     </div>
 
-
-                    <div class="col-12 col-md-6 justify-content-center px-0 mb-2">
-                            <label for="location">Location</label>
+                    <!-- Location setting -->
+                    <div class="col-12 col-md-6 justify-content-center px-0">
+                        <div class="col-12 mb-2">
+                            <label for="location"> Location </label>
                             <input type="text" name="location" id="location" value="{{user_profile.location}}">
-                    </div>
-
-                    <div class="col-12 col-md-6 justify-content-center px-0 mb-2">
-                        <label for="link1">Link:</label>
-                        <input type="text" name="link1" id="link1" value="{{user_profile.link1}}">
-                        <label for="link2">Link:</label>
-                        <input type="text" name="link2" id="link2" value="{{user_profile.link2}}">
-                        <label for="link1">Link:</label>
-                        <input type="text" name="link3" id="link3" value="{{user_profile.link3}}">
-                    </div>
-
-                    <!-- <div class="col-12 col-md-6 justify-content-center px-0"> -->
-                        <!-- role selection: may remove. Unlikely to change post-registration -->
-                        <!-- <div class="col-12 mb-1">
-                            <label for="role">Role</label>
                         </div>
+                    </div>
+
+                    <!-- Begin Role Selection -->
+                    <div class="col-12 col-md-6 justify-content-center px-0 mb-2">
                         <div class="col-12 mb-1">
+                            <label for="role">Role </label>
                             <select id="role" name="role" id="role" value="{--}">
                                 <option disabled selected value> -- select an option -- </option>
                                 <optgroup label="Vocal Performer:">
@@ -80,10 +71,12 @@
                                 </optgroup>
                             </select>
                         </div>
-                    </div> end of role selection -->
+                    </div>
+                    <!-- end of role selection -->
                 </div>
             </div>
-        </div> <!-- end of 'your details' -->
+        </div>
+        <!-- end of 'your details' -->
         <!-- Profile Basics -->
         <div class="col-12">
             <div>
@@ -94,17 +87,17 @@
                     <div class="row px-3">
                         <div class="col-12 col-md-6 justify-content-center px-0">
                             <div class="col-12 mb-1">
-                                <label for="avatar-upload">Profile Image</label>
-                                <img width="100" height="100" src="{{ user_profile.avatar.url }}"/>
+                                <label for="avatar-upload">Avatar </label>
                             </div>
                             <div class="col-12">
-                                <input type="file" name="avatar" id="avatar-upload" value="">
+                                <img width="100" height="100" src="{{ user_profile.avatar.url }}"/>
+                                <input class="mt-1 mb-1" type="file" name="avatar" id="avatar-upload" value="">
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6 justify-content-center px-0">
-                            <div class="col-12 mb-1">
-                                <label for="bio">Bio</label>
+                            <div class="col-12">
+                                <label for="bio">Bio </label>
                             </div>
                             <div class="col-12 mb-1">
                                 <textarea id="bio" name="bio" rows="4">{{user_profile.bio}}</textarea>
@@ -112,14 +105,31 @@
                         </div>
                     </div>
                     <!-- social links -->
-                    <!-- save/cancel -->
+                    <div class="row justify-content-center px-0 mt-4 mb-2">
+                        <div class="col-12 text-center">
+                            <h4>Social Links</h4>
+                            <p>Promote your website, social media, Spotify or Linktree on your profile:</p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                                <label for="link1">Link: </label>
+                                <input type="text" name="link1" id="link1" value="{{user_profile.link1}}">
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <label for="link2">Link: </label>
+                            <input type="text" name="link2" id="link2" value="{{user_profile.link2}}">
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <label for="link1">Link: </label>
+                            <input type="text" name="link3" id="link3" value="{{user_profile.link3}}">
+                        </div>
+                        <!-- end of social links -->
+                    </div>
             </div>
         </div> <!-- end of profile basics -->
-        <!-- history section -->
         <!-- save/cancel -->
-        <!-- history section -->
         <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
         <button class="btn btn-light"><a href="{% url 'index' %}">{% trans "Cancel" %}</a></button>
     </form>
+    <!-- could add history section -->
 </div>
 {% endblock content %}
