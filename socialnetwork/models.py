@@ -21,9 +21,6 @@ class Profile(models.Model):
     location = models.CharField(max_length=100, blank=True)
     avatar = models.ImageField(
         'image', upload_to='avatars/', default='default-user_vltu5x')
-    # link1 = models.CharField(max_length=255, null=True)
-    # link2 = models.CharField(max_length=255, null=True)
-    # link3 = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return str(self.user)

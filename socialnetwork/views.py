@@ -134,9 +134,6 @@ def settings(request):
         last_name = request.POST['last_name']
         bio = request.POST['bio']
         location = request.POST['location']
-        link1 = request.POST['link1']
-        link2 = request.POST['link2']
-        link3 = request.POST['link3']
         # create variables equal to form fields (name attr)
 
         user_profile.avatar = avatar
@@ -144,9 +141,6 @@ def settings(request):
         user_profile.last_name = last_name
         user_profile.bio = bio
         user_profile.location = location
-        user_profile.link1 = link1
-        user_profile.link1 = link2
-        user_profile.link1 = link3
         # set user's profile object properties equal to variables
 
         user_profile.save()
