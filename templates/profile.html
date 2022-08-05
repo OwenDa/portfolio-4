@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Profile" %}{% endblock %}
+{% block head_title %}{% trans "Profile " %}{{user_profile.user.username}}{% endblock %}
 
 {% block content %}
 <!-- Profile Header-->
