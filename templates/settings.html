@@ -13,14 +13,14 @@
             <hr>
         </div>
     </div>
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
         <!-- Your Details -->
-        <div class="col-12">
-            <div>
-                <h3 class="mb-2">Your Details</h3>
-            </div>
-            <div class="shadow p-3 mb-4 bg-white rounded">
+    <div class="col-12">
+        <div>
+            <h3 class="mb-2">Your Details</h3>
+        </div>
+        <div class="shadow p-3 mb-4 bg-white rounded">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row px-3">
                     <div class="col-12 col-md-6 justify-content-center px-0">
                         <div class="col-12 mb-2">
@@ -74,62 +74,55 @@
                     </div>
                     <!-- end of role selection -->
                 </div>
-            </div>
+                <div class="row px-3">
+                    <div class="col-12 col-md-6 justify-content-center px-0">
+                        <div class="col-12 mb-1">
+                            <label for="avatar-upload">Avatar </label>
+                        </div>
+                        <div class="col-12">
+                            <img width="100" height="100" src="{{ user_profile.avatar.url }}"/>
+                            <input class="mt-1 mb-1" type="file" name="avatar" id="avatar-upload" value="">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 justify-content-center px-0">
+                        <div class="col-12">
+                            <label for="bio">Bio </label>
+                        </div>
+                        <div class="col-12 mb-1">
+                            <textarea id="bio" name="bio" rows="4">{{user_profile.bio}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- save/cancel button area -->
+                <div class="row justify-content-center align-items-center">
+                    <button class="btn btn-primary my-3 mx-2" type="submit">{% trans "Save Details" %}</button>
+                    <button class="btn btn-light my-3 mx-2"><a href="{% url 'index' %}">{% trans "Cancel" %}</a></button>
+                </div>
+            </form>
         </div>
+    </div>
         <!-- end of 'your details' -->
-        <!-- Profile Basics -->
+        <!-- Social Links -->
         <div class="col-12">
             <div>
-                <h3 class="mb-2">Profile Basics</h3>
+                <h3 class="mb-2">Social Links</h3>
             </div>
             <div class="shadow p-3 mb-4 bg-white rounded">
-                    {% csrf_token %}
-                    <div class="row px-3">
-                        <div class="col-12 col-md-6 justify-content-center px-0">
-                            <div class="col-12 mb-1">
-                                <label for="avatar-upload">Avatar </label>
-                            </div>
-                            <div class="col-12">
-                                <img width="100" height="100" src="{{ user_profile.avatar.url }}"/>
-                                <input class="mt-1 mb-1" type="file" name="avatar" id="avatar-upload" value="">
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-6 justify-content-center px-0">
-                            <div class="col-12">
-                                <label for="bio">Bio </label>
-                            </div>
-                            <div class="col-12 mb-1">
-                                <textarea id="bio" name="bio" rows="4">{{user_profile.bio}}</textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- social links -->
                     <div class="row justify-content-center px-0 mt-4 mb-2">
-                        <div class="col-12 text-center">
-                            <h4>Social Links</h4>
-                            <p>Promote your website, social media, Spotify or Linktree on your profile:</p>
-                        </div>
-                        <div class="col-12 col-md-3">
-                                <label for="link1">Link: </label>
-                                <input type="text" name="link1" id="link1" value="{{user_profile.link1}}">
-                        </div>
-                        <div class="col-12 col-md-3">
-                            <label for="link2">Link: </label>
-                            <input type="text" name="link2" id="link2" value="{{user_profile.link2}}">
-                        </div>
-                        <div class="col-12 col-md-3">
-                            <label for="link1">Link: </label>
-                            <input type="text" name="link3" id="link3" value="{{user_profile.link3}}">
-                        </div>
-                        <!-- end of social links -->
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <p class="text-center">Promote your website and other users know where they can find you and your work online.</p>
+                            {{ SocialLinkForm }}
+                            <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
+                            <button class="btn btn-light"><a href="{% url 'index' %}">{% trans "Cancel" %}</a></button>
+                        </form>
                     </div>
             </div>
-        </div> <!-- end of profile basics -->
-        <!-- save/cancel -->
-        <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
-        <button class="btn btn-light"><a href="{% url 'index' %}">{% trans "Cancel" %}</a></button>
-    </form>
+        </div> <!-- end of social links -->
+
     <!-- could add history section -->
+
+
 </div>
 {% endblock content %}

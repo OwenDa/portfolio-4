@@ -28,21 +28,11 @@
     <div class="row align-items-center">
         <div class="col-10 offset-1">
             <ul id="social-links" class="list-inline row">
-                {% if user_profile.link1 is not None and user_profile.link1 != "None" %}
+                {% for link in social_links %}
                 <li class="col-4">
-                    <a href="#" class="px-2">{{ user_profile.link1 }}</a>
+                    <a href="{{ link.link }}" class="px-2">{{ link.site_name }}</a>
                 </li>
-                {% endif %}
-                {% if user_profile.link2 is not None and user_profile.link2 != "None" %}
-                <li class="col-4">
-                    <a href="#" class="px-2">{{ user_profile.link2 }}</a>
-                </li>
-                {% endif %}
-                {% if user_profile.link3 is not None and user_profile.link3 != "None" %}
-                <li class="col-4">
-                    <a href="#" class="px-2">{{ user_profile.link3 }}</a>
-                </li>
-                {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </div>
