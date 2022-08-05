@@ -30,7 +30,7 @@
             <ul id="social-links" class="list-inline row">
                 {% for link in social_links %}
                 <li class="col-4">
-                    <a href="{{ link.link }}" class="px-2">{{ link.site_name }}</a>
+                    <a href="{{ link.link }}" target="_blank" aria_label="User-created link, opens in a new tab" class="px-2">{{ link.site_name }}</a>
                 </li>
                 {% endfor %}
             </ul>
