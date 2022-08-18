@@ -100,6 +100,11 @@ h3 {
     overflow-wrap: break-word
 }
 
+label {
+    font-size: 1.1rem;
+    letter-spacing: .1rem;
+}
+
 /* MESSAGES */
 #message-div {
     position: fixed;

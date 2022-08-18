@@ -112,6 +112,8 @@ def settings(request):
     user_profile = Profile.objects.get(user=request.user)
     # create variable user_profile to include all objects
     # in the current user's profile
+    social_links = SocialLink.objects.filter(user=request.user)
+    # create variable social_links to include user's links
 
     if request.method == 'POST':
         if 'add_link' in request.POST:
@@ -149,5 +151,12 @@ def settings(request):
         # return to settings url
 
     # if method is not POST:
-    context = {'user_profile': user_profile, 'SocialLinkForm': SocialLinkForm}
+    context = {'user_profile': user_profile, 'SocialLinkForm': SocialLinkForm, 'social_links': social_links}
     return render(request, 'settings.html', context)
+
+def delete_link(request, id):
+    """ Allows user to delete individual social links """
+    link = SocialLink.objects.get(id=id)
+    if link:
+        link.delete()
+    return redirect('settings')

@@ -5,7 +5,7 @@
 <title>{% block head_title %}{% trans "Account Settings" %}{% endblock %}</title>
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid light-weight">
     <div class="row">
         <div class="col-12">
             <h2><a href="{% url 'index' %}">Home</a> / Settings</h2>
@@ -39,7 +39,7 @@
                             <input type="text" name="username" id="username" value="{{user.username}}" disabled>
                         </div>
                         <div class="col-12 mb-2">
-                            <p id="profile-url" >Your url:  www.site.com/<strong>{{user.username}}</strong></p>
+                            <p id="profile-url" >Your url:  www.site.com/profile/<strong>{{user.username}}</strong></p>
                         </div>
                     </div>
 
@@ -113,6 +113,13 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             <p class="text-center">Promote your website and other users know where they can find you and your work online.</p>
+                            {% for link in social_links %}
+                                <li class="col-4">
+                                    <a href="{{ link.link }}" target="_blank" aria_label="User-created link, opens in a new tab" class="px-2">{{ link.site_name }}</a>
+                                    <a href="{% url 'delete-link' id=link.id %}"><i class="fas fa-trash-alt"></i></a>
+                                </li>
+                                {% endfor %}
+                            
                             {{ SocialLinkForm }}
                             <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
                             <button class="btn btn-light"><a href="{% url 'index' %}">{% trans "Cancel" %}</a></button>
