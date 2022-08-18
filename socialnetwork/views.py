@@ -151,12 +151,18 @@ def settings(request):
         # return to settings url
 
     # if method is not POST:
-    context = {'user_profile': user_profile, 'SocialLinkForm': SocialLinkForm, 'social_links': social_links}
+    context = {
+        'user_profile': user_profile,
+        'SocialLinkForm': SocialLinkForm,
+        'social_links': social_links}
     return render(request, 'settings.html', context)
 
+
 def delete_link(request, id):
-    """ Allows user to delete individual social links """
+    """
+    Allows user to delete individual social links
+    from their settings page (reflected on their public profile)
+    """
     link = SocialLink.objects.get(id=id)
-    if link:
-        link.delete()
+    link.delete()
     return redirect('settings')
