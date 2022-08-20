@@ -64,10 +64,13 @@
                 </div>
                 <div class="mb-4">
                     {% for item in history_items %}
-                    <p>N</p>
                     <div class="history-item">
                         <p class="history-item-year">{{ item.year }}</p>
-                        <h4>{{ item.history_heading }}</h4>
+                        <h4>{{ item.history_heading }}
+                            {% if request.user.username == user_profile.user.username %}
+                            <a href="{% url 'delete-item' id=item.id %}"><i class="fas fa-trash-alt"></i></a>
+                            {% endif %}
+                        </h4>
                         <h5> {{ item.history_details }}</h5>
                         <p> {{ item.history_role }}</p>
                     </div>
@@ -142,7 +145,7 @@
     </section>
 </div>
     <section>
-        <!-- Modal -->
+        <!-- Add History Item Modal -->
         <div class="modal fade" id="addHistoryModal" tabindex="-1" role="dialog" aria-labelledby="addHistoryModalInner"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

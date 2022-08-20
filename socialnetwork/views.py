@@ -186,3 +186,13 @@ def delete_link(request, id):
     link = SocialLink.objects.get(id=id)
     link.delete()
     return redirect('settings')
+
+
+def delete_item(request, id):
+    """
+    Allows user to delete individual history items
+    from their profile page
+    """
+    item = HistoryItem.objects.get(id=id)
+    item.delete()
+    return redirect(f'/profile/{request.user.username}')
