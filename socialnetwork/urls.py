@@ -25,4 +25,5 @@ urlpatterns = [
     path('signin', views.signin, name='signin'),
     path('signout', views.signout, name='signout'),
     path('delete-link/<int:id>/', views.delete_link, name='delete-link'),
+    # delete link (identified by id) from user's own social links
 ]

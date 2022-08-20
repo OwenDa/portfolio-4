@@ -1,10 +1,11 @@
 """ Views.py """
+import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Profile, SocialLink
-from .forms import SocialLinkForm
+from .models import Profile, SocialLink, HistoryItem
+from .forms import SocialLinkForm, HistoryItemForm
 
 
 @login_required(login_url='signin')
@@ -98,10 +99,27 @@ def profile(request, pk):
     social_links = SocialLink.objects.filter(user=user_object)
     # except SocialLink.DoesNotExist:
     #     social_links = None
+    history_items = HistoryItem.objects.filter(user=user_object)
+    YEAR_CHOICES = reversed(
+        [(y, y)for y in range(1950, datetime.date.today().year+2)])
+    # used to populate year select field with range 1950-present +2
+    # to allow for in-production works; reverse ordered for convenience
+    if request.method == 'POST':
+        form = HistoryItemForm(request.POST)
+        if form.is_valid():
+            # failing here: Data bound but not valid?
+            new_history_item = form.save(commit=False)
+            new_history_item.user = request.user  # The logged-in user
+            new_history_item.save()
+        else:
+            messages.info(request, 'Error: Invalid Form')
+
     context = {
         'user_object': user_object,
         'user_profile': user_profile,
-        'social_links': social_links}
+        'social_links': social_links,
+        'history_items': history_items,
+        'YEAR_CHOICES': YEAR_CHOICES, }
     # returning multiple variables, so using a context to bundle together.
     return render(request, 'profile.html', context)
 

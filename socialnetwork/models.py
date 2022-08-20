@@ -38,3 +38,19 @@ class SocialLink(models.Model):
 
     def __str__(self):
         return str(self.site_name)
+
+
+class HistoryItem(models.Model):
+    """ Model for User's history items """
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='history_items')
+    # if user (the 'one' in the 'one-to-many' relationship here) is deleted
+    # also delete all related records (ie. their history items in this case).
+
+    history_heading = models.CharField(max_length=150, null=True)
+    history_details = models.CharField(max_length=150, blank=True, null=True)
+    history_role = models.CharField(max_length=150, null=True)
+    year = models.IntegerField(null=True)
+
+    def __str__(self):
+        return str(self.history_role)

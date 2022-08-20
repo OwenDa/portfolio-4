@@ -55,8 +55,10 @@
                     <div class="col-12 col-md-6 justify-content-center px-0 mb-2">
                         <div class="col-12 mb-1">
                             <label for="role">Role </label>
-                            <select id="role" name="role" id="role" value="{{user_profile.role}}">
+                            <select id="role" name="role" value="{{user_profile.role}}">
+                                {% if user_profile == None %}
                                 <option disabled selected value> -- select an option -- </option>
+                                {% endif %}
                                 <optgroup label="Vocal Performer:">
                                     <option value="soprano">Soprano</option>
                                     <option value="mezzo-soprano">Mezzo-Soprano</option>

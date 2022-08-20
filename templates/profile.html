@@ -9,36 +9,48 @@
 <section class="container py-4">
     <div class="row align-items-center mb-2">
         <div class="col-4 col-md-3">
-            <img src="{{ user_profile.avatar.url }}" class="profile-avatar avatar mx-2" aria-labelledby="user-full-name">
+            <img src="{{ user_profile.avatar.url }}" class="profile-avatar avatar mx-2"
+                aria-labelledby="user-full-name">
         </div>
         <div class="col-8 col-md-9">
             <div class="row">
                 <div class="col-12">
-                    <a href="{{user_profile.user.username}}"><h2 id="user-full-name">{{ user_profile.first_name }} {{ user_profile.last_name }}</h2></a>    
+                    <a href="{{user_profile.user.username}}">
+                        <h2 id="user-full-name">{{ user_profile.first_name }} {{ user_profile.last_name }}</h2>
+                    </a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <p>{{ user_profile.role|title }}</p>
+                    <h3>{{ user_profile.role|title }}</h3>
+                    <h4>Location: {{ user_profile.location }}</h4>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- if social links -->
-    <div class="row align-items-center">
-        <div class="col-10 offset-1">
-            <ul id="social-links" class="list-inline row">
-                {% for link in social_links %}
-                <li class="col-4">
-                    <a href="{{ link.link }}" target="_blank" aria_label="User-created link, opens in a new tab" class="px-2">{{ link.site_name }}</a>
-                </li>
-                {% endfor %}
-            </ul>
+            <!-- SOCIAL LINKS -->
+            {% if social_links %}
+            <div class="row align-items-center">
+                <div class="col-12 py-2" id="social-links">
+                    <h4>Follow {{ user_profile.first_name }} on:</h4>
+                    <div class="row">
+                        {% for link in social_links %}
+                        <div class="col-xs-12 col-s-6 col-md-4 d-inline">
+                            <a href="{{ link.link }}" target="_blank" aria_label="User-created link, opens in a new tab"
+                                class="px-2">{{ link.site_name }} <i class="fas fa-external-link-alt"></i></a></div>
+                        {% if forloop.counter|divisibleby:3 %}
+                    </div>
+                    <div class="row">
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <!-- END OF SOCIAL LINKS -->
         </div>
     </div>
 </section> <!-- End of Profile Header -->
- <!-- Profile Body -->
-<section class="container">
+<!-- Profile Body -->
+<div class="container">
     <!-- HISTORY -->
     <section class="container-fluid">
         <div class="row">
@@ -51,19 +63,27 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                    <!-- for item in history -->
+                    {% for item in history_items %}
+                    <p>N</p>
                     <div class="history-item">
-                        <p class="history-item-year">2018</p>
-                        <h4>Production/Company</h4>
-                        <h5>Company/Theatre</h5>
-                        <p>Role</p>
+                        <p class="history-item-year">{{ item.year }}</p>
+                        <h4>{{ item.history_heading }}</h4>
+                        <h5> {{ item.history_details }}</h5>
+                        <p> {{ item.history_role }}</p>
                     </div>
+                    {% endfor %}
                     <div class="history-item">
                         <p class="history-item-year">2019</p>
                         <h4>Production/Company</h4>
                         <h5>Company/Theatre</h5>
                         <p>Role</p>
                     </div>
+                    {% if request.user.username == user_profile.user.username %}
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary my-2" data-toggle="modal"
+                        data-target="#addHistoryModal">Add/Edit Item(s)</button>
+                    {% endif %}
+
                 </div>
             </div>
             <div class="col-12 col-md-7 order-1 order-md-2">
@@ -78,7 +98,7 @@
                     <!-- Posts -->
                     <div class="row">
                         <h3 class="mb-3 text-uppercase">
-                        Posts
+                            Posts
                         </h3>
                     </div>
                     <!-- if posts: for post in posts: -->
@@ -89,7 +109,8 @@
                                 <!-- ROW 1 -->
                                 <div class="card-header px-2">
                                     <h5>
-                                        <img src="{% static '/images/default-user.jpg' %}" class="post-avatar avatar" aria-labelledby="post-user-full-name">
+                                        <img src="{% static '/images/default-user.jpg' %}" class="post-avatar avatar"
+                                            aria-labelledby="post-user-full-name">
                                         <a href="#" id="post-user-full-name">Firstname Lastname</a>
                                     </h5>
                                 </div>
@@ -98,13 +119,15 @@
                                 <!-- ROW 3 (Post date and written content) -->
                                 <div class="card-body">
                                     <p class="text-right" id="post-date">xx/xx/xxxx</p>
-                                    <p class="card-text" id="post-text">Written post content goes here. Written post content goes here. Written post content goes here. Written post content goes here. Written post content goes here. Written post content goes here.</p>
+                                    <p class="card-text" id="post-text">Written post content goes here. Written post
+                                        content goes here. Written post content goes here. Written post content goes
+                                        here. Written post content goes here. Written post content goes here.</p>
                                     <div class="card-footer">
                                         <div class="row justify-between">
                                             <div class="col-4 col-md-4">Like</div>
                                             <div class="col-6 col-md-4 text-center px-0">Comments</div>
                                             <div class="col-2 col-md-4 text-right"><i class="fas fa-chevron-down"></i>
-                                            <!-- Options may include:
+                                                <!-- Options may include:
                                             share, edit, delete, disable comments, bookmark/save -->
                                             </div>
                                         </div>
@@ -117,4 +140,56 @@
             </div>
         </div>
     </section>
-{% endblock content %}
+</div>
+    <section>
+        <!-- Modal -->
+        <div class="modal fade" id="addHistoryModal" tabindex="-1" role="dialog" aria-labelledby="addHistoryModalInner"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addHistoryModalInner">Add Role:</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body row justify-content-center">
+                            <div class="col-12 mb-2">
+                                <label for="history-heading">Heading <i class="fas fa-info-circle" data-toggle="tooltip"
+                                        data-placement="right" title="e.g. school name or theatre company"></i></label>
+                                <input type="text" maxlength="150" placeholder="" name="history_heading"
+                                    id="history-heading" required>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="history-details">Details <i class="fas fa-info-circle" data-toggle="tooltip"
+                                        data-placement="right" title="e.g. production title"></i></label>
+                                <input type="text" maxlength="150" placeholder="" name="history_details"
+                                    id="history-details">
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="history-role">Role <i class="fas fa-info-circle" data-toggle="tooltip"
+                                        data-placement="right" title="Role or occupation"></i></label>
+                                <input type="text" maxlength="150" placeholder="" name="history_role" id="history-role"
+                                    required>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="year">Year:</label>
+                                <select name="year" id="year" required>
+                                    {% for id, year in YEAR_CHOICES %}
+                                    <option value="{{ id }}">{{ year }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock content %}
