@@ -2,41 +2,50 @@
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://kit.fontawesome.com/5d01ef762e.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661089294/media/favicon_aiafts.ico">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661089294/media/favicon_aiafts.ico">
     <title>Opera Ireland</title>
 </head>
+
 <body>
     <!-- Navigation -->
     <div class="container-fluid">
         <nav class="navbar navbar-light navbar-expand-md py-0 bg-light fixed-top main-navbar" id="mainNav">
-            <h1><a href="{% url 'index' %}" class="navbar-brand">Opera Ireland</a></h1>   
-                <!-- Nav Toggler -->
-                <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-links" aria-label="Toggle Navigation Menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- Nav Items -->
-                <div class="collapse navbar-collapse" id="nav-links">
-                    <ul class="navbar-nav ml-auto">
-                        {% if user.is_authenticated %}
-                            <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-plus-square d-none d-md-inline"></i> New Post</a></li>
-                            <li class="nav-item"><a href="{% url 'settings' %}" class="nav-link"><i class="fas fa-cog d-none d-md-inline"></i> Settings</a></li>
-                            <li class="nav-item"><a href="/profile/{{user.username}}" class="nav-link"><i class="fas fa-user d-none d-md-inline"></i> {{user.username}}</a></li>
-                            <li class="nav-item"><a href="{% url 'signout' %}" class="nav-link"><i class="fas fa-sign-out-alt d-none d-md-inline"></i> Sign Out</a></li>  
-                        {% else %}
-                            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-                            <li class="nav-item"><a href="{% url 'signin' %}" class="nav-link">Sign In</a></li>
-                            <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link">Sign Up</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
+            <h1><a href="{% url 'index' %}" class="navbar-brand">Opera Ireland</a></h1>
+            <!-- Nav Toggler -->
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-links"
+                aria-label="Toggle Navigation Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Nav Items -->
+            <div class="collapse navbar-collapse" id="nav-links">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#newPostModal"><i
+                                class="fas fa-plus-square d-none d-md-inline"></i> New Post</a></li>
+                    <li class="nav-item"><a href="{% url 'settings' %}" class="nav-link"><i
+                                class="fas fa-cog d-none d-md-inline"></i> Settings</a></li>
+                    <li class="nav-item"><a href="/profile/{{user.username}}" class="nav-link"><i
+                                class="fas fa-user d-none d-md-inline"></i> {{user.username}}</a></li>
+                    <li class="nav-item"><a href="{% url 'signout' %}" class="nav-link"><i
+                                class="fas fa-sign-out-alt d-none d-md-inline"></i> Sign Out</a></li>
+                    {% else %}
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="{% url 'signin' %}" class="nav-link">Sign In</a></li>
+                    <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </nav>
     </div>
 
@@ -45,11 +54,11 @@
         <div class="row justify-content-center align-items-center alert alert-warning" role="alert" id="message-div">
             <div class="col-12">
                 <strong>Message(s):</strong>
-                    <ul>
-                        {% for message in messages %}
-                        <li>{{message}}</li>
-                        {% endfor %}
-                    </ul>
+                <ul>
+                    {% for message in messages %}
+                    <li>{{message}}</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </section>
@@ -63,8 +72,10 @@
                 <form action="/search" method="POST">
                     {% csrf_token %}
                     <div class="input-group mb-1 mt-1">
-                        <input type="text" class="form-control" placeholder="Search users..." aria-label="Search users by name">
-                        <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+                        <input type="text" class="form-control" placeholder="Search users..."
+                            aria-label="Search users by name">
+                        <button class="btn btn-outline-secondary" type="submit" id="search-button"><i
+                                class="fas fa-search"></i></button>
                     </div>
                 </form>
                 {% endif %}
@@ -77,11 +88,51 @@
     <!-- Content -->
     {% endblock content %}
 
+    <!-- BEGIN NEW POST MODAL -->
+    <div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModalInner"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="upload" method="POST"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addHistoryModalInner">Create Public Post</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body row justify-content-center">
+                        <div class="col-12 mb-4">
+                            <!-- New Post: Text Area -->
+                            <label for="post-text"><i class="fas fa-pen-nib"></i> Text: </label>
+                            <textarea class="form-control mt-1 mb-2" rows="10" cols="50" name="post_text" id="post-text" placeholder="Write your post here, but keep it classy!"required></textarea>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <!-- New Post: Image Area (optional) -->
+                            <label for="image-upload"><i class="fas fa-upload"></i> Upload Image (optional): </label>
+                            <input class="mt-1 mb-2 form-control-file" type="file" name="image_upload" id="image_upload" value="">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END OF NEW POST MODAL-->
+
     <!-- Footer -->
     <footer class="text-center">&copy;2022</footer>
 
     <!-- Scripts: JQuery & Bootstrap JS CDNs -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>

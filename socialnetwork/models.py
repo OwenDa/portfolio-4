@@ -1,4 +1,6 @@
 """ Database models """
+import uuid
+from datetime import datetime
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
@@ -54,3 +56,17 @@ class HistoryItem(models.Model):
 
     def __str__(self):
         return str(self.history_role)
+
+
+class Post(models.Model):
+    """ Model for user-created posts """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.CharField(max_length=200)
+    post_image = models.ImageField(
+        'image', upload_to='post-images/', blank=True)
+    post_text = models.TextField()
+    created_at = models.DateTimeField(default=datetime.now)
+    no_of_applause = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.user

@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Profile, SocialLink, HistoryItem
+from .models import Profile, SocialLink, HistoryItem, Post
 from .forms import SocialLinkForm, HistoryItemForm
 
 
@@ -196,3 +196,19 @@ def delete_item(request, id):
     item = HistoryItem.objects.get(id=id)
     item.delete()
     return redirect(f'/profile/{request.user.username}')
+
+
+@login_required(login_url='signin')
+def upload(request):
+    """ Post upload """
+
+    if request.method == 'POST':
+        user = request.user.username
+        post_image = request.FILES.get('image_upload')
+        post_text = request.POST['post_text']
+
+        new_post = Post.objects.create(user=user, post_image=post_image, post_text=post_text)
+        new_post.save()
+        return redirect('/')
+    else:
+        return redirect('/')
