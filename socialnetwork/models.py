@@ -70,3 +70,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.user
+
+
+class PostApplause(models.Model):
+    """ Applause is equivalent to 'liking' a post """
+    post_id = models.CharField(max_length=500)
+    username = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.username

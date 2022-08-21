@@ -4,14 +4,22 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Profile, SocialLink, HistoryItem, Post
+from .models import Profile, SocialLink, HistoryItem, Post, PostApplause
 from .forms import SocialLinkForm, HistoryItemForm
 
 
 @login_required(login_url='signin')
 def index(request):
     """ View to render index """
-    return render(request, 'index.html')
+    user_object = User.objects.get(username=request.user.username)
+    # set user equal to user object in which username = current user
+    user_profile = Profile.objects.get(user=user_object)
+    # set user profile to that of user_object (current user)
+
+    posts = Post.objects.all()
+    context = {'user_profile': user_profile, 'posts': posts, }
+
+    return render(request, 'index.html', context)
 
 
 def signup(request):
@@ -178,6 +186,7 @@ def settings(request):
     return render(request, 'settings.html', context)
 
 
+@login_required(login_url='signin')
 def delete_link(request, id):
     """
     Allows user to delete individual social links
@@ -188,6 +197,7 @@ def delete_link(request, id):
     return redirect('settings')
 
 
+@login_required(login_url='signin')
 def delete_item(request, id):
     """
     Allows user to delete individual history items
@@ -207,8 +217,50 @@ def upload(request):
         post_image = request.FILES.get('image_upload')
         post_text = request.POST['post_text']
 
-        new_post = Post.objects.create(user=user, post_image=post_image, post_text=post_text)
+        new_post = Post.objects.create(
+            user=user, post_image=post_image, post_text=post_text)
         new_post.save()
         return redirect('/')
     else:
+        return redirect('/')
+
+
+@login_required(login_url='signin')
+def post_applause(request):
+    """
+    Applause function as post likes. See index.html for applause button
+    and code. View logic willidentify both post and user, check whether
+    they've already liked the post and then like/unlike accordingly, updating
+    the post's like count at the same time.
+    """
+    username = request.user.username
+    # get currently logged in user's username
+    post_id = request.GET.get('post_id')
+    # get id of post in question
+
+    post = Post.objects.get(id=post_id)
+    # identify post in question
+
+    applause_filter = PostApplause.objects.filter(post_id=post_id, username=username).first()
+    # check for exising applause objects with this postid and username
+    # Note: Although only expecting one object, using 'get' throws error;
+    # use of filter as workaround requires first() method to avoid error.
+
+    if applause_filter is None:
+        # if no such applause already exists:
+        new_applause = PostApplause.objects.create(
+            post_id=post_id, username=username)
+        # create new applause with post_id and username equal to current
+        new_applause.save()
+        post.no_of_applause = post.no_of_applause+1
+        post.save()
+        # save new applause object, update count, save change to post.
+        return redirect('/')
+    else:
+        # if applause already exists:
+        applause_filter.delete()
+        # delete the object found by the filter as the user
+        # must want to unlike the post
+        post.no_of_applause = post.no_of_applause-1
+        post.save()
         return redirect('/')
