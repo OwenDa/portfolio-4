@@ -1,10 +1,11 @@
 body {
-    background: #fafafa;
+    /* background: #fafafa; */
+    background: red;
     padding-top: 50px;
     font-family: "Nunito", sans-serif;
 }
 
-/* Custom Properties */
+/* Site Custom Properties */
 :root {
     --accent1: #b21a7f;
 }
