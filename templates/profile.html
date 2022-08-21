@@ -101,7 +101,11 @@
                     <!-- POSTS -->
                     <div class="row">
                         <h3 class="mb-3 text-uppercase">
-                            {{ num_user_posts }} Posts
+                            {% if num_user_posts == 1 %}
+                                {{ num_user_posts }} Post
+                            {% else %}
+                                {{ num_user_posts }} Posts
+                            {% endif %}
                         </h3>
                     </div>
                     {% if num_user_posts > 0 %}
@@ -112,11 +116,13 @@
                         <a href="/profile/{{post.user}}" aria-label="Open user's profile">
                             <div class="card-header px-2 row align-items-center">
                                 <div class="col-4 col-md-2 col-lg-1">
-                                    <img src="{{ user_profile.avatar.url }}" class="post-avatar avatar img-fluid" aria-labelledby="post-user-full-name">
+                                    <img src="{{ user_profile.avatar.url }}" class="post-avatar avatar img-fluid"
+                                        aria-labelledby="post-user-full-name">
                                 </div>
                                 <div class="col-8 col-md-10 col-lg-11">
                                     <div class="row d-flex justify-content-between">
-                                        <h5 class="col-12 col-md-6">{{ user_profile.first_name }} {{ user_profile.last_name }}</h5>
+                                        <h5 class="col-12 col-md-6">{{ user_profile.first_name }}
+                                            {{ user_profile.last_name }}</h5>
                                         <h5 class="col-12 col-md-6 text-right">(@{{ post.user }})</h5>
                                     </div>
                                 </div>
@@ -133,11 +139,16 @@
                             <div class="card-footer">
                                 <div class="row justify-content-between">
                                     <div class="col-4 col-md-4">
-                                        <a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language"></i></a> {{ post.no_of_applause }} applause</div>
+                                        <a href="/post-applause?post_id={{ post.id }}"><i
+                                                class="fas fa-sign-language"></i></a> {{ post.no_of_applause }} applause
+                                    </div>
                                     <div class="col-6 col-md-4 text-center px-0">Comments</div>
-                                    <div class="col-2 col-md-4 text-right"><i class="fas fa-chevron-down"></i>
-                                    <!-- Options may include:
-                                    share, edit, delete, disable comments, bookmark/save -->
+                                    <div class="col-2 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                        <button class="dropdown-item" type="button"><a
+                                                href="{% url 'delete-post' id=post.id %}">Delete Post</a></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -150,56 +161,56 @@
         </div>
     </section>
 </div>
-    <section>
-        <!-- Add History Item Modal -->
-        <div class="modal fade" id="addHistoryModal" tabindex="-1" role="dialog" aria-labelledby="addHistoryModalInner"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form action="" method="POST">
-                        {% csrf_token %}
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addHistoryModalInner">Add Role:</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+<section>
+    <!-- Add History Item Modal -->
+    <div class="modal fade" id="addHistoryModal" tabindex="-1" role="dialog" aria-labelledby="addHistoryModalInner"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addHistoryModalInner">Add Role:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body row justify-content-center">
+                        <div class="col-12 mb-2">
+                            <label for="history-heading">Heading <i class="fas fa-info-circle" data-toggle="tooltip"
+                                    data-placement="right" title="e.g. school name or theatre company"></i></label>
+                            <input type="text" maxlength="150" placeholder="" name="history_heading"
+                                id="history-heading" required>
                         </div>
-                        <div class="modal-body row justify-content-center">
-                            <div class="col-12 mb-2">
-                                <label for="history-heading">Heading <i class="fas fa-info-circle" data-toggle="tooltip"
-                                        data-placement="right" title="e.g. school name or theatre company"></i></label>
-                                <input type="text" maxlength="150" placeholder="" name="history_heading"
-                                    id="history-heading" required>
-                            </div>
-                            <div class="col-12 mb-2">
-                                <label for="history-details">Details <i class="fas fa-info-circle" data-toggle="tooltip"
-                                        data-placement="right" title="e.g. production title"></i></label>
-                                <input type="text" maxlength="150" placeholder="" name="history_details"
-                                    id="history-details">
-                            </div>
-                            <div class="col-12 mb-2">
-                                <label for="history-role">Role <i class="fas fa-info-circle" data-toggle="tooltip"
-                                        data-placement="right" title="Role or occupation"></i></label>
-                                <input type="text" maxlength="150" placeholder="" name="history_role" id="history-role"
-                                    required>
-                            </div>
-                            <div class="col-12 mb-2">
-                                <label for="year">Year:</label>
-                                <select name="year" id="year" required>
-                                    {% for id, year in YEAR_CHOICES %}
-                                    <option value="{{ id }}">{{ year }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
+                        <div class="col-12 mb-2">
+                            <label for="history-details">Details <i class="fas fa-info-circle" data-toggle="tooltip"
+                                    data-placement="right" title="e.g. production title"></i></label>
+                            <input type="text" maxlength="150" placeholder="" name="history_details"
+                                id="history-details">
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        <div class="col-12 mb-2">
+                            <label for="history-role">Role <i class="fas fa-info-circle" data-toggle="tooltip"
+                                    data-placement="right" title="Role or occupation"></i></label>
+                            <input type="text" maxlength="150" placeholder="" name="history_role" id="history-role"
+                                required>
                         </div>
-                    </form>
-                </div>
+                        <div class="col-12 mb-2">
+                            <label for="year">Year:</label>
+                            <select name="year" id="year" required>
+                                {% for id, year in YEAR_CHOICES %}
+                                <option value="{{ id }}">{{ year }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- End Add History Modal -->
-    </section>
-    {% endblock content %}
+    </div>
+    <!-- End Add History Modal -->
+</section>
+{% endblock content %}

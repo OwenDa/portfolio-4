@@ -4,13 +4,14 @@
 {% block content %}
 <section class="container">
     {% for post in posts reversed %}
-<!-- Post Template: -->
+    <!-- Post Template: -->
     <div class="card mt-4 mb-2 shadow rounded container">
         <!-- ROW 1 -->
         <a href="/profile/{{post.user}}" aria-label="Open user's profile">
             <div class="card-header px-2 row align-items-center">
                 <div class="col-4 col-md-2 col-lg-1">
-                    <img src="{{ user_profile.avatar.url }}" class="post-avatar avatar img-fluid" aria-labelledby="post-user-full-name">
+                    <img src="{{ user_profile.avatar.url }}" class="post-avatar avatar img-fluid"
+                        aria-labelledby="post-user-full-name">
                 </div>
                 <div class="col-8 col-md-10 col-lg-11">
                     <div class="row d-flex justify-content-between">
@@ -31,15 +32,23 @@
             <div class="card-footer">
                 <div class="row justify-content-between">
                     <div class="col-4 col-md-4">
-                        <a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language"></i></a> {{ post.no_of_applause }} applause</div>
+                        <a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language"></i></a>
+                        {{ post.no_of_applause }} applause</div>
                     <div class="col-6 col-md-4 text-center px-0">Comments</div>
-                    <div class="col-2 col-md-4 text-right"><i class="fas fa-chevron-down"></i>
-                    <!-- Options may include:
-                    share, edit, delete, disable comments, bookmark/save -->
+                    {% if post.user == request.user.username %}
+                    <!-- Future options may include share post, edit post, disable comments, bookmark/save; however, current options are of use to post-owner only. -->
+                    <div class="col-2 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <button class="dropdown-item" type="button"><a
+                                    href="{% url 'delete-post' id=post.id %}">Delete Post</a></button>
+                        </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
+    </div>
     </div> <!-- End of post template: -->
     {% endfor %}
 </section>

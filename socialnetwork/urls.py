@@ -30,4 +30,5 @@ urlpatterns = [
     # delete history item (identified by id) from user's own profile
     path('upload', views.upload, name='upload'),
     path('post-applause', views.post_applause, name='post-applause'),
+    path('delete-post/<uuid:id>/', views.delete_post, name='delete-post'),
 ]

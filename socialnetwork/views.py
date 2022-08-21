@@ -205,11 +205,22 @@ def delete_link(request, id):
 @login_required(login_url='signin')
 def delete_item(request, id):
     """
-    Allows user to delete individual history items
-    from their profile page
+    Allows user to delete individual history items from their profile page;
+    option only visible where logged in user is equal to request user.
     """
     item = HistoryItem.objects.get(id=id)
     item.delete()
+    return redirect(f'/profile/{request.user.username}')
+
+
+@login_required(login_url='signin')
+def delete_post(request, id):
+    """
+    Allows user to delete their posts;
+    option only visible where logged in user is equal to request user.
+    """
+    post = Post.objects.get(id=id)
+    post.delete()
     return redirect(f'/profile/{request.user.username}')
 
 
@@ -246,7 +257,8 @@ def post_applause(request):
     post = Post.objects.get(id=post_id)
     # identify post in question
 
-    applause_filter = PostApplause.objects.filter(post_id=post_id, username=username).first()
+    applause_filter = PostApplause.objects.filter(
+        post_id=post_id, username=username).first()
     # check for exising applause objects with this postid and username
     # Note: Although only expecting one object, using 'get' throws error;
     # use of filter as workaround requires first() method to avoid error.
