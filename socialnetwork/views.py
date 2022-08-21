@@ -103,10 +103,13 @@ def profile(request, pk):
     # create variable 'user_profile' by getting the profile (object from
     # Profile table) in which the user is equal to user_object variable above.
     # In effect, user_profile now refers to the profile for the pk passed in.
-    # try:
+
     social_links = SocialLink.objects.filter(user=user_object)
-    # except SocialLink.DoesNotExist:
-    #     social_links = None
+
+    user_posts = Post.objects.filter(user=user_object)
+    # find all user's posts
+    num_user_posts = len(user_posts)
+
     history_items = HistoryItem.objects.filter(user=user_object)
     YEAR_CHOICES = reversed(
         [(y, y)for y in range(1950, datetime.date.today().year+2)])
@@ -126,6 +129,8 @@ def profile(request, pk):
         'user_object': user_object,
         'user_profile': user_profile,
         'social_links': social_links,
+        'user_posts': user_posts,
+        'num_user_posts': num_user_posts,
         'history_items': history_items,
         'YEAR_CHOICES': YEAR_CHOICES, }
     # returning multiple variables, so using a context to bundle together.
