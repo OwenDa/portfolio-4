@@ -73,7 +73,7 @@
     <section class="container-fluid">
         <div class="row">
             <!-- HISTORY -->
-            <div class="col-12 col-md-5 order-2 order-md-1">
+            <div class="col-12 col-md-4 order-2 order-md-1">
                 <div class="row">
                     <div class="col-12">
                         <h3 class="mb-3 text-uppercase">
@@ -102,7 +102,7 @@
 
                 </div>
             </div>
-            <div class="col-12 col-md-7 order-1 order-md-2">
+            <div class="col-12 col-md-8 order-1 order-md-2">
                 <div class="container-fluid">
                     <!-- BIO -->
                     <div class="row">
@@ -122,52 +122,10 @@
                         </h3>
                     </div>
                     {% if num_user_posts > 0 %}
-                    {% for post in user_posts %}
+                    {% for post in posts %}
                     <!-- Post Template: -->
-                    <div class="card mt-4 mb-2 shadow rounded container">
-                        <!-- ROW 1 -->
-                        <a href="/profile/{{post.user}}" aria-label="Open user's profile">
-                            <div class="card-header px-2 row align-items-center">
-                                <div class="col-4 col-md-3 col-lg-2">
-                                    <img src="{{ post.user.profile.avatar.url }}" class="post-avatar avatar img-fluid"
-                                        aria-labelledby="post-user-full-name">
-                                </div>
-                                <div class="col-8 col-md-9 col-lg-10">
-                                    <div class="row d-flex justify-content-between">
-                                        <h5>{{ post.user.profile.first_name }}
-                                            {{ post.user.profile.last_name }}</h5>
-                                        <h5 class="text-right mr-2"> @{{ post.user }}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- ROW 2 (Image in post, if any) -->
-                        {% if post.post_image %}
-                        <img class="card-img-top" src="{{ post.post_image.url }}" alt="" id="post-image">
-                        {% endif %}
-                        <!-- ROW 3 (Post date and written content) -->
-                        <div class="card-body">
-                            <p class="text-right" id="post-date">{{ post.created_at }}</p>
-                            <p class="card-text" id="post-text">{{ post.post_text }} </p>
-                            <div class="card-footer">
-                                <div class="row justify-content-between">
-                                    <div class="col-4 col-md-4">
-                                        <a href="/post-applause?post_id={{ post.id }}"><i
-                                                class="fas fa-sign-language"></i></a> {{ post.no_of_applause }} applause
-                                    </div>
-                                    {% if post.user == request.user %}
-                                    <div class="col-2 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                        <button class="dropdown-item" type="button"><a
-                                                href="{% url 'delete-post' id=post.id %}">Delete Post</a></button>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- End of post template: -->
+                        {% include 'post-template.html' %}
+                    <!-- End of post template: -->
                     {% endfor %}
                     {% endif %}
                 </div>

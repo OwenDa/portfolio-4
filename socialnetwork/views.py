@@ -17,15 +17,14 @@ def index(request):
     user_profile = Profile.objects.get(user=user_object)
     # set user profile to that of user_object (current user)
 
-    posts = Post.objects.all().select_related('user__profile').order_by("created_at")
+    posts = Post.objects.all().select_related(
+        'user__profile').order_by("created_at")
     # Alternative to posts = Post.objects.all(), note the double underscore.
     # Template reference works the same (post.user.profile to access profile
     # of post.user aka post author) but the info for each post author is
     # retrieved more efficiently. The FK from Post to User and one-to-one from
     # User->Profile allows for select_related to be used; otherwise
     # prefetch_related would be required follow a foreignkey.
-
-    paginate_by = 2
 
     context = {
         'user_profile': user_profile,
@@ -119,9 +118,9 @@ def profile(request, pk):
 
     social_links = SocialLink.objects.filter(user=user_object)
 
-    user_posts = Post.objects.filter(user=user_object)
+    posts = Post.objects.filter(user=user_object)
     # find all user's posts
-    num_user_posts = len(user_posts)
+    num_user_posts = len(posts)
 
     history_items = HistoryItem.objects.filter(user=user_object)
     YEAR_CHOICES = reversed(
@@ -143,7 +142,7 @@ def profile(request, pk):
         'user_object': user_object,
         'user_profile': user_profile,
         'social_links': social_links,
-        'user_posts': user_posts,
+        'posts': posts,
         'num_user_posts': num_user_posts,
         'history_items': history_items,
         'YEAR_CHOICES': YEAR_CHOICES, }
