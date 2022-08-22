@@ -24,16 +24,15 @@
         <p class="text-right" id="post-date">{{ post.created_at }}</p>
         <p class="card-text" id="post-text">{{ post.post_text }} </p>
         <div class="card-footer">
-            <div class="row justify-content-between">
-
+            <div class="row justify-content-between align-items-center">
                 <!-- "Applause" aka Likes -->
-                <div class="col-4 col-md-4">
-                    <a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language"></i></a>{{ post.no_of_applause }} applause
+                <div class="col-9 col-md-8">
+                    <p class="lead"><a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language"></i></a> {{ post.no_of_applause }} applause</p>
                 </div>
                 <!-- Dropdown chevron for user options -->
                 {% if post.user == request.user %}
                 <!-- Future options may include share post, edit post, disable comments, bookmark/save; however, current options are of use to post-owner only. -->
-                <div class="col-2 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"
+                <div class="col-3 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                     <div class="dropdown-menu dropdown-menu-right">
                         <button class="dropdown-item" type="button"><a
