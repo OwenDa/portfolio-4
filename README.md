@@ -17,3 +17,4 @@ Images:
 "John Lansbury" profile avatar (user2)
 3. Photo by Pixabay: https://www.pexels.com/photo/tilt-shift-photograph-of-gray-and-black-microphone-164879/
 Microphone user2 post photo
+4. django-simple-pagination docs: https://django-simple-pagination.readthedocs.io/en/latest/index.html and pypi link: https://pypi.org/project/django-simple-pagination/

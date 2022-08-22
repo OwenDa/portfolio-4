@@ -96,7 +96,11 @@ h4 {
     background: var(--accent1);
 }
 
-/* POST STYLES */
+/* POST/POST-FEED STYLES */
+#pagination-nav {
+    letter-spacing: 1rem;
+    font-weight: 700;
+}
 
 /* SETTINGS STYLES */
 

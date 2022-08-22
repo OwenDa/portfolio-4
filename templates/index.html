@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load paginate %}
 
 {% block content %}
 
 <section class="container">
+    {% paginate 10 posts %}
     {% for post in posts reversed %}
     <!-- Post Template: -->
     <div class="card mt-4 mb-2 shadow rounded container">
@@ -54,5 +56,8 @@
     </div>
     </div> <!-- End of post template: -->
     {% endfor %}
+    <div class="d-flex justify-content-between">
+        {% show_pageitems %}<span id="pagination-nav">{% show_pages %}</span>
+    </div>
 </section>
 {% endblock content %}

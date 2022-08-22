@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'socialnetwork',
+    'simple_pagination',
 ]
 
 SITE_ID = 1
