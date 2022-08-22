@@ -16,7 +16,13 @@ def index(request):
     user_profile = Profile.objects.get(user=user_object)
     # set user profile to that of user_object (current user)
 
-    posts = Post.objects.all()
+    posts = Post.objects.all().select_related('user__profile')
+     # Alternative to posts = Post.objects.all(), note the double underscore.
+     # Template reference works the same (post.user.profile to access profile
+     # of post.user aka post author) but the info for each post author is
+     # retrieved more efficiently. The FK from Post to User and one-to-one
+     # from User->Profile allows for select_related to be used; otherwise
+     # prefetch_related would be required follow a foreignkey.
 
     context = {'user_profile': user_profile, 'posts': posts, }
 
