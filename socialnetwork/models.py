@@ -12,8 +12,8 @@ User = get_user_model()
 
 class Profile(models.Model):
     """ Extends built-in user model """
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='user_profile')
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='profile')
     # if user (the 'one' in the 'one-to-many' relationship here) is deleted
     # also delete related records (ie. their profile in this case).
     first_name = models.CharField(max_length=100)
@@ -61,7 +61,8 @@ class HistoryItem(models.Model):
 class Post(models.Model):
     """ Model for user-created posts """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    user = models.CharField(max_length=200)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='post')
     post_image = models.ImageField(
         'image', upload_to='post-images/', blank=True)
     post_text = models.TextField()

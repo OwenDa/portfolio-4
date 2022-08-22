@@ -2,6 +2,28 @@
 {% load static %}
 
 {% block content %}
+<!-- Search bar -->
+<section class="container-fluid mt-2">
+    <div class="row align-items-center">
+        <h5 class="col-3 col-md-4"><a href="#" class="nav-link" data-toggle="modal" data-target="#newPostModal"><i
+            class="fas fa-plus-square d-none d-md-inline"></i> New Post</a></h5>
+        <div class="col-7 col-md-6">
+            {% if user.is_authenticated %}
+            <form action="/search" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-1 mt-1">
+                    <input type="text" class="form-control" placeholder="Search users..."
+                        aria-label="Search users by name">
+                    <button class="btn btn-outline-secondary" type="submit" id="search-button"><i
+                            class="fas fa-search"></i></button>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!-- End of search and add post panel -->
+
 <section class="container">
     {% for post in posts reversed %}
     <!-- Post Template: -->
@@ -9,14 +31,14 @@
         <!-- ROW 1 -->
         <a href="/profile/{{post.user}}" aria-label="Open user's profile">
             <div class="card-header px-2 row align-items-center">
-                <div class="col-4 col-md-2 col-lg-1">
-                    <img src="{{ user_profile.avatar.url }}" class="post-avatar avatar img-fluid"
+                <div class="col-4 col-md-3 col-lg-2">
+                    <img src="{{ post.user.profile.avatar.url }}" class="post-avatar avatar img-fluid"
                         aria-labelledby="post-user-full-name">
                 </div>
-                <div class="col-8 col-md-10 col-lg-11">
+                <div class="col-8 col-md-9 col-lg-10">
                     <div class="row d-flex justify-content-between">
-                        <h5 class="col-12 col-md-6">{{ user_profile.first_name }} {{ user_profile.last_name }}</h5>
-                        <h5 class="col-12 col-md-6 text-right">(@{{ post.user }})</h5>
+                        <h5>{{ post.user.profile.first_name }} {{ post.user.profile.last_name }}</h5>
+                        <h5 class="text-right mr-4">(@{{ post.user }})</h5>
                     </div>
                 </div>
             </div>
@@ -35,7 +57,7 @@
                         <a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language"></i></a>
                         {{ post.no_of_applause }} applause</div>
                     <div class="col-6 col-md-4 text-center px-0">Comments</div>
-                    {% if post.user == request.user.username %}
+                    {% if post.user == request.user %}
                     <!-- Future options may include share post, edit post, disable comments, bookmark/save; however, current options are of use to post-owner only. -->
                     <div class="col-2 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
@@ -52,4 +74,39 @@
     </div> <!-- End of post template: -->
     {% endfor %}
 </section>
+
+<!-- BEGIN NEW POST MODAL -->
+<div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModalInner"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPostModalInner">Create Public Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row justify-content-center">
+                <div class="col-12 mb-4">
+                    <!-- New Post: Text Area -->
+                    <label for="post-text"><i class="fas fa-pen-nib"></i> Text: </label>
+                    <textarea class="form-control mt-1 mb-2" rows="10" cols="50" name="post_text" id="post-text" placeholder="Write your post here, but keep it classy!"required></textarea>
+                </div>
+                <div class="col-12 mb-2">
+                    <!-- New Post: Image Area (optional) -->
+                    <label for="image-upload"><i class="fas fa-upload"></i> Upload Image (optional): </label>
+                    <input class="mt-1 mb-2 form-control-file" type="file" name="image_upload" id="image_upload" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<!-- END OF NEW POST MODAL-->
 {% endblock content %}

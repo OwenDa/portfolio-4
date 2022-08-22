@@ -115,15 +115,15 @@
                         <!-- ROW 1 -->
                         <a href="/profile/{{post.user}}" aria-label="Open user's profile">
                             <div class="card-header px-2 row align-items-center">
-                                <div class="col-4 col-md-2 col-lg-1">
-                                    <img src="{{ user_profile.avatar.url }}" class="post-avatar avatar img-fluid"
+                                <div class="col-4 col-md-3 col-lg-2">
+                                    <img src="{{ post.user.profile.avatar.url }}" class="post-avatar avatar img-fluid"
                                         aria-labelledby="post-user-full-name">
                                 </div>
-                                <div class="col-8 col-md-10 col-lg-11">
+                                <div class="col-8 col-md-9 col-lg-10">
                                     <div class="row d-flex justify-content-between">
-                                        <h5 class="col-12 col-md-6">{{ user_profile.first_name }}
-                                            {{ user_profile.last_name }}</h5>
-                                        <h5 class="col-12 col-md-6 text-right">(@{{ post.user }})</h5>
+                                        <h5>{{ post.user.profile.first_name }}
+                                            {{ post.user.profile.last_name }}</h5>
+                                        <h5 class="text-right mr-2">(@{{ post.user }})</h5>
                                     </div>
                                 </div>
                             </div>
@@ -143,6 +143,7 @@
                                                 class="fas fa-sign-language"></i></a> {{ post.no_of_applause }} applause
                                     </div>
                                     <div class="col-6 col-md-4 text-center px-0">Comments</div>
+                                    {% if post.user == request.user %}
                                     <div class="col-2 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                         <div class="dropdown-menu dropdown-menu-right">
@@ -150,6 +151,7 @@
                                                 href="{% url 'delete-post' id=post.id %}">Delete Post</a></button>
                                         </div>
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

@@ -17,6 +17,7 @@ def index(request):
     # set user profile to that of user_object (current user)
 
     posts = Post.objects.all()
+
     context = {'user_profile': user_profile, 'posts': posts, }
 
     return render(request, 'index.html', context)
@@ -158,7 +159,7 @@ def settings(request):
         if request.FILES.get('avatar') is None:
             # if no image being submitted
             avatar = user_profile.avatar
-            # create variable 'avatar' set equal to current avatar
+            # create variable 'avatar' set equal to current avatarj
         else:
             avatar = request.FILES.get('avatar')
             # otherwise, get submitted image assign to variable 'avatar'
@@ -229,7 +230,7 @@ def upload(request):
     """ Post upload """
 
     if request.method == 'POST':
-        user = request.user.username
+        user = request.user
         post_image = request.FILES.get('image_upload')
         post_text = request.POST['post_text']
 
@@ -252,10 +253,10 @@ def post_applause(request):
     username = request.user.username
     # get currently logged in user's username
     post_id = request.GET.get('post_id')
-    # get id of post in question
+    # get id of post in the request
 
     post = Post.objects.get(id=post_id)
-    # identify post in question
+    # identify this post in the Post table
 
     applause_filter = PostApplause.objects.filter(
         post_id=post_id, username=username).first()
