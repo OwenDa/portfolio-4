@@ -55,21 +55,21 @@
                     <div class="col-12 col-md-6 justify-content-center px-0 mb-2">
                         <div class="col-12 mb-1">
                             <label for="role">Role </label>
-                            <select id="role" name="role" value="{{user_profile.role}}">
-                                {% if user_profile == None %}
+                            <select id="role" name="role" value="{{user_profile.role}}" required>
+                                {% if user_profile.role == None %}
                                 <option disabled selected value> -- select an option -- </option>
                                 {% endif %}
                                 <optgroup label="Vocal Performer:">
-                                    <option value="soprano">Soprano</option>
-                                    <option value="mezzo-soprano">Mezzo-Soprano</option>
-                                    <option value="contralto">Contralto</option>
-                                    <option value="tenor">Tenor</option>
-                                    <option value="baritone">Baritone</option>
-                                    <option value="bass">Bass</option>
+                                    <option value="soprano" {% if user_profile.role == "soprano" %}selected{% endif %}>Soprano</option>
+                                    <option value="mezzo-soprano" {% if user_profile.role == "mezzo-soprano" %}selected{% endif %}>Mezzo-Soprano</option>
+                                    <option value="contralto" {% if user_profile.role == "contralto" %}selected{% endif %}>Contralto</option>
+                                    <option value="tenor" {% if user_profile.role == "tenor" %}selected{% endif %}>Tenor</option>
+                                    <option value="baritone" {% if user_profile.role == "baritone" %}selected{% endif %}>Baritone</option>
+                                    <option value="bass" {% if user_profile.role == "bass" %}selected{% endif %}>Bass</option>
                                 </optgroup>
                                 <optgroup label="Other:">
-                                    <option value="non-vocal-performer">Non-Vocal Performer</option>
-                                    <option value="non-performer">Non-performer</option>
+                                    <option value="non-vocal-performer" {% if user_profile.role == "non-vocal-performer" %}selected{% endif %}>Non-Vocal Performer</option>
+                                    <option value="non-performer" {% if user_profile.role == "non-performer" %}selected{% endif %}>Non-performer</option>
                                 </optgroup>
                             </select>
                         </div>

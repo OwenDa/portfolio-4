@@ -14,23 +14,38 @@
         </div>
         <div class="col-8 col-md-9">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 px-0">
                     <a href="{{user_profile.user.username}}">
                         <h2 id="user-full-name">{{ user_profile.first_name }} {{ user_profile.last_name }}</h2>
                     </a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <h3>{{ user_profile.role|title }}</h3>
-                    <h4>Location: {{ user_profile.location }}</h4>
+                <div class="col-12 px-0">
+                    <!-- User Role display -->
+                    {% if user_profile.role is not None %}
+                        <h3>{{ user_profile.role|title }}</h3>
+                    {% elif user_profile.user.username == request.user.username %}
+                        <h3>Set up your role-type in <a href="{% url 'settings' %}">Settings</a></h3>
+                    {% endif %}
+                    <!-- User Location display -->
+                    {% if user_profile.location %}
+                        <h4>Location: {{ user_profile.location }}</h4>
+                    {% elif user_profile.user.username == request.user.username %}
+                        <h4>Input your <a href="{% url 'settings' %}">Location</a></h4>
+                    {% else %}
+                        <h4>Location: Unknown</a></h4>
+                    {% endif %}
                 </div>
             </div>
             <!-- SOCIAL LINKS -->
-            {% if social_links %}
             <div class="row align-items-center">
                 <div class="col-12 py-2" id="social-links">
+                    {% if social_links %}
                     <h4>Follow {{ user_profile.first_name }} on:</h4>
+                    {% elif user_profile.user.username == request.user.username %}
+                    <h4 class="my-2"><i class="fas fa-link"></i> <a href="{% url 'settings' %}">Add your website, social media and other links</a></h4>
+                    {% endif %}
                     <div class="row">
                         {% for link in social_links %}
                         <div class="col-xs-12 col-s-6 col-md-4 d-inline">
@@ -43,9 +58,7 @@
                         {% endfor %}
                     </div>
                 </div>
-            </div>
-            {% endif %}
-            <!-- END OF SOCIAL LINKS -->
+            </div><!-- END OF SOCIAL LINKS -->
         </div>
     </div>
 </section> <!-- End of Profile Header -->
@@ -75,12 +88,6 @@
                         <p> {{ item.history_role }}</p>
                     </div>
                     {% endfor %}
-                    <div class="history-item">
-                        <p class="history-item-year">2019</p>
-                        <h4>Production/Company</h4>
-                        <h5>Company/Theatre</h5>
-                        <p>Role</p>
-                    </div>
                     {% if request.user.username == user_profile.user.username %}
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary my-2" data-toggle="modal"
