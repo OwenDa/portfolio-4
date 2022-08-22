@@ -51,10 +51,12 @@
             <p class="card-text" id="post-text">{{ post.post_text }} </p>
             <div class="card-footer">
                 <div class="row justify-content-between">
+
+                    <!-- "Applause" aka Likes -->
                     <div class="col-4 col-md-4">
-                        <a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language"></i></a>
-                        {{ post.no_of_applause }} applause</div>
-                    <div class="col-6 col-md-4 text-center px-0">Comments</div>
+                        <a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language"></i></a>{{ post.no_of_applause }} applause
+                    </div>
+                    <!-- Dropdown chevron for user options -->
                     {% if post.user == request.user %}
                     <!-- Future options may include share post, edit post, disable comments, bookmark/save; however, current options are of use to post-owner only. -->
                     <div class="col-2 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"

@@ -4,7 +4,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Profile, SocialLink, HistoryItem, Post, PostApplause
+from .models import (Profile,
+                     SocialLink, HistoryItem, Post, PostApplause)
 from .forms import SocialLinkForm, HistoryItemForm
 
 
@@ -17,14 +18,16 @@ def index(request):
     # set user profile to that of user_object (current user)
 
     posts = Post.objects.all().select_related('user__profile')
-     # Alternative to posts = Post.objects.all(), note the double underscore.
-     # Template reference works the same (post.user.profile to access profile
-     # of post.user aka post author) but the info for each post author is
-     # retrieved more efficiently. The FK from Post to User and one-to-one
-     # from User->Profile allows for select_related to be used; otherwise
-     # prefetch_related would be required follow a foreignkey.
+    # Alternative to posts = Post.objects.all(), note the double underscore.
+    # Template reference works the same (post.user.profile to access profile
+    # of post.user aka post author) but the info for each post author is
+    # retrieved more efficiently. The FK from Post to User and one-to-one from
+    # User->Profile allows for select_related to be used; otherwise
+    # prefetch_related would be required follow a foreignkey.
 
-    context = {'user_profile': user_profile, 'posts': posts, }
+    context = {
+        'user_profile': user_profile,
+        'posts': posts, }
 
     return render(request, 'index.html', context)
 
@@ -121,13 +124,12 @@ def profile(request, pk):
     YEAR_CHOICES = reversed(
         [(y, y)for y in range(1950, datetime.date.today().year+2)])
     # used to populate year select field with range 1950-present +2
-    # to allow for in-production works; reverse ordered for convenience
+    # to allow for works in pre-production; reverse ordered for convenience
     if request.method == 'POST':
         form = HistoryItemForm(request.POST)
         if form.is_valid():
-            # failing here: Data bound but not valid?
             new_history_item = form.save(commit=False)
-            new_history_item.user = request.user  # The logged-in user
+            new_history_item.user = request.User
             new_history_item.save()
         else:
             messages.info(request, 'Error: Invalid Form')

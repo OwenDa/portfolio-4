@@ -26,7 +26,7 @@ class Profile(models.Model):
     role = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user.__str__)
 
 
 class SocialLink(models.Model):
@@ -65,12 +65,12 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name='post')
     post_image = models.ImageField(
         'image', upload_to='post-images/', blank=True)
-    post_text = models.TextField()
+    post_text = models.TextField(max_length=500)
     created_at = models.DateTimeField(default=datetime.now)
     no_of_applause = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.user
+        return str(self.user)
 
 
 class PostApplause(models.Model):
@@ -79,4 +79,4 @@ class PostApplause(models.Model):
     username = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.username
+        return str(self.username)
