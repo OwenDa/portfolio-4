@@ -5,8 +5,15 @@ body {
 }
 
 /* Site Custom Properties */
+a {
+    color: rgb(164, 129, 197);
+}
 :root {
-    --accent1: #b21a7f;
+    --accent1: #651049;
+}
+
+.accent {
+    color: var(--accent1)
 }
 
 /* SIGN-IN PAGE */
@@ -20,6 +27,15 @@ body {
     font-size: 1.2rem;
     font-weight: 100;
     text-transform: uppercase;
+}
+
+.nav-link > i {
+    color: var(--accent1);
+}
+
+.navbar-brand {
+    text-decoration: underline;
+    text-decoration-color: var(--accent1);
 }
 
 footer {
