@@ -33,6 +33,7 @@
                     {% if user.is_authenticated %}
                     <!-- <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#newPostModal"><i
                                 class="fas fa-plus-square d-none d-md-inline"></i> New Post</a></li> -->
+                    <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#newPostModal"><i class="fas fa-plus-square d-none d-md-inline"></i> New Post</a></li>
                     <li class="nav-item"><a href="{% url 'settings' %}" class="nav-link"><i
                                 class="fas fa-cog d-none d-md-inline"></i> Settings</a></li>
                     <li class="nav-item"><a href="/profile/{{user.username}}" class="nav-link"><i
@@ -68,6 +69,41 @@
     {% block content %}
     <!-- Content -->
     {% endblock content %}
+
+    <!-- BEGIN NEW POST MODAL -->
+<div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModalInner"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPostModalInner">Create Public Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row justify-content-center">
+                <div class="col-12 mb-4">
+                    <!-- New Post: Text Area -->
+                    <label for="post-text"><i class="fas fa-pen-nib"></i> Text: </label>
+                    <textarea class="form-control mt-1 mb-2" rows="10" cols="50" name="post_text" id="post-text" placeholder="Write your post here, but keep it classy!"required></textarea>
+                </div>
+                <div class="col-12 mb-2">
+                    <!-- New Post: Image Area (optional) -->
+                    <label for="image-upload"><i class="fas fa-upload"></i> Upload Image (optional): </label>
+                    <input class="mt-1 mb-2 form-control-file" type="file" name="image_upload" id="image_upload" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<!-- END OF NEW POST MODAL-->
 
     <!-- Footer -->
     <footer class="text-center">&copy;2022</footer>

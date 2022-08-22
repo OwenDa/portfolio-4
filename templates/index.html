@@ -4,10 +4,8 @@
 {% block content %}
 <!-- Search bar -->
 <section class="container-fluid mt-2">
-    <div class="row align-items-center">
-        <h5 class="col-3 col-md-4"><a href="#" class="nav-link" data-toggle="modal" data-target="#newPostModal"><i
-            class="fas fa-plus-square d-none d-md-inline"></i> New Post</a></h5>
-        <div class="col-7 col-md-6">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-10 col-md-6">
             {% if user.is_authenticated %}
             <form action="/search" method="POST">
                 {% csrf_token %}
@@ -38,7 +36,7 @@
                 <div class="col-8 col-md-9 col-lg-10">
                     <div class="row d-flex justify-content-between">
                         <h5>{{ post.user.profile.first_name }} {{ post.user.profile.last_name }}</h5>
-                        <h5 class="text-right mr-4">(@{{ post.user }})</h5>
+                        <h5 class="text-right mr-4"> @{{ post.user }}</h5>
                     </div>
                 </div>
             </div>
@@ -74,39 +72,4 @@
     </div> <!-- End of post template: -->
     {% endfor %}
 </section>
-
-<!-- BEGIN NEW POST MODAL -->
-<div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModalInner"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <form method="POST"  enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="modal-header">
-                <h5 class="modal-title" id="addPostModalInner">Create Public Post</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body row justify-content-center">
-                <div class="col-12 mb-4">
-                    <!-- New Post: Text Area -->
-                    <label for="post-text"><i class="fas fa-pen-nib"></i> Text: </label>
-                    <textarea class="form-control mt-1 mb-2" rows="10" cols="50" name="post_text" id="post-text" placeholder="Write your post here, but keep it classy!"required></textarea>
-                </div>
-                <div class="col-12 mb-2">
-                    <!-- New Post: Image Area (optional) -->
-                    <label for="image-upload"><i class="fas fa-upload"></i> Upload Image (optional): </label>
-                    <input class="mt-1 mb-2 form-control-file" type="file" name="image_upload" id="image_upload" value="">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-</div>
-<!-- END OF NEW POST MODAL-->
 {% endblock content %}
