@@ -25,6 +25,8 @@ def index(request):
     # User->Profile allows for select_related to be used; otherwise
     # prefetch_related would be required follow a foreignkey.
 
+    paginate_by = 2
+
     context = {
         'user_profile': user_profile,
         'posts': posts, }
@@ -97,6 +99,7 @@ def signin(request):
 def signout(request):
     """ Sign user out and redirect to signin page """
     auth.logout(request)
+    messages.info(request, 'You have logged out.')
     return redirect('signin')
 
 
@@ -131,6 +134,8 @@ def profile(request, pk):
             new_history_item = form.save(commit=False)
             new_history_item.user = request.User
             new_history_item.save()
+            messages.success(request,
+                             'Success! You added a new item to your History.')
         else:
             messages.info(request, 'Error: Invalid Form')
 
@@ -189,6 +194,8 @@ def settings(request):
 
         user_profile.save()
         # save profile object
+        messages.success(request, 'Success! Profile changes saved.')
+
         return redirect('settings')
         # return to settings url
 
@@ -208,6 +215,7 @@ def delete_link(request, id):
     """
     link = SocialLink.objects.get(id=id)
     link.delete()
+    messages.warning(request, 'Link deleted.')
     return redirect('settings')
 
 
@@ -219,6 +227,7 @@ def delete_item(request, id):
     """
     item = HistoryItem.objects.get(id=id)
     item.delete()
+    messages.info(request, 'Item deleted from your history.')
     return redirect(f'/profile/{request.user.username}')
 
 
@@ -230,6 +239,7 @@ def delete_post(request, id):
     """
     post = Post.objects.get(id=id)
     post.delete()
+    messages.warning(request, 'Post deleted.')
     return redirect(f'/profile/{request.user.username}')
 
 
@@ -245,6 +255,7 @@ def upload(request):
         new_post = Post.objects.create(
             user=user, post_image=post_image, post_text=post_text)
         new_post.save()
+        messages.success(request, 'Success! New post published.')
         return redirect('/')
     else:
         return redirect('/')

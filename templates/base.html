@@ -50,14 +50,15 @@
 
     {% if messages %}
     <section class="container-fluid">
-        <div class="row justify-content-center align-items-center alert alert-warning" role="alert" id="message-div">
+        <div class="row justify-content-center align-items-center" id="message-div">
             <div class="col-12">
-                <strong>Message(s):</strong>
-                <ul>
-                    {% for message in messages %}
-                    <li>{{message}}</li>
-                    {% endfor %}
-                </ul>
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible fade show d-flex justify-content-between" id="msg" role="alert">
+                        {{ message | safe }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -67,6 +68,20 @@
     {% block content %}
     <!-- Content -->
     {% endblock content %}
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 
     <!-- BEGIN NEW POST MODAL -->
 <div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModalInner"
@@ -106,7 +121,16 @@ aria-hidden="true">
     <!-- Footer -->
     <footer class="text-center">&copy;2022</footer>
 
-    <!-- Scripts: JQuery, PopperJS & Bootstrap JS CDNs -->
+    <!-- Scripts: Self-dismiss messages // Credit to CodeInstitute "I Think Therefore I Blog" Django tutorial -->
+    <script>
+        setTimeout(function () {
+            let messages = document.getElementById('msg');
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 3000);
+    </script>
+
+    <!-- CDN Scripts: JQuery, PopperJS & Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
