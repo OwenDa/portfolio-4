@@ -10,6 +10,8 @@ Bootstrap 4 vs 5
 
 4. Special thanks to https://stackoverflow.com/users/18799377/samsparx
 
+5. django-simple-pagination docs: https://django-simple-pagination.readthedocs.io/en/latest/index.html and pypi link: https://pypi.org/project/django-simple-pagination/
+
 
 Images:
 1. Photo by Anderson Guerra: https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/
@@ -18,4 +20,5 @@ Images:
 "John Lansbury" profile avatar (user2)
 3. Photo by Pixabay: https://www.pexels.com/photo/tilt-shift-photograph-of-gray-and-black-microphone-164879/
 Microphone user2 post photo
-4. django-simple-pagination docs: https://django-simple-pagination.readthedocs.io/en/latest/index.html and pypi link: https://pypi.org/project/django-simple-pagination/
+4. microphone image as user4 avatar: Photo by Pixabay from Pexels: https://www.pexels.com/photo/hand-metal-music-musician-33779/
+5. warm up post image Photo by Chris K: https://www.pexels.com/photo/football-speedladder-warmup-13204962/

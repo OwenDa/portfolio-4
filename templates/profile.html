@@ -90,7 +90,9 @@
                             <a href="{% url 'delete-item' id=item.id %}"><i class="fas fa-trash-alt"></i></a>
                             {% endif %}
                         </h4>
+                        {% if item.history_details is not None %}
                         <h5> {{ item.history_details }}</h5>
+                        {% endif %}
                         <p> {{ item.history_role }}</p>
                     </div>
                     {% endfor %}
@@ -175,8 +177,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </form>
             </div>
