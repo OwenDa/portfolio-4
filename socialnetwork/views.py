@@ -131,7 +131,7 @@ def profile(request, pk):
         form = HistoryItemForm(request.POST)
         if form.is_valid():
             new_history_item = form.save(commit=False)
-            new_history_item.user = request.User
+            new_history_item.user = request.user
             new_history_item.save()
             messages.success(request,
                              'Success! You added a new item to your History.')
