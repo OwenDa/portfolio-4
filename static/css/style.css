@@ -146,6 +146,10 @@ label {
     letter-spacing: .1rem;
 }
 
+.no-bullet {
+    list-style: none;
+}
+
 /* MESSAGES */
 #message-div {
     position: fixed;

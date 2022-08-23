@@ -23,39 +23,39 @@
                 {% csrf_token %}
                 <div class="row px-3">
                     <div class="col-12 col-md-6 justify-content-center px-0">
-                        <div class="col-12 mb-2">
+                        <div class="col-12 mb-2 form-group">
                             <label for="first-name">First Name</label>
-                            <input type="text" name="first_name" id="first-name" value="{{user_profile.first_name}}">
+                            <input type="text" name="first_name" id="first-name" value="{{user_profile.first_name}}" class="form-control">
                         </div>
-                        <div class="col-12 mb-2">
+                        <div class="col-12 mb-2 form-group">
                             <label for="last-name">Last Name</label>
-                            <input type="text" name="last_name" id="last-name" value="{{user_profile.last_name}}">
+                            <input type="text" name="last_name" id="last-name" value="{{user_profile.last_name}}" class="form-control">
                         </div>
                     </div>
                     <!-- Username subsection -->
                     <div class="col-12 col-md-6 justify-content-center px-0">
-                        <div class="col-12 mb-2">
+                        <div class="col-12 mb-2 form-group">
                             <label for="username">Username</label>
-                            <input type="text" name="username" id="username" value="{{user.username}}" disabled>
+                            <input type="text" name="username" id="username" value="{{user.username}}" class="form-control" disabled>
                         </div>
                         <div class="col-12 mb-2">
-                            <p id="profile-url" >Your url:  www.site.com/profile/<strong>{{user.username}}</strong></p>
+                            <p id="profile-url" >Your url:  site.com/profile/<strong>{{user.username}}</strong></p>
                         </div>
                     </div>
 
                     <!-- Location setting -->
                     <div class="col-12 col-md-6 justify-content-center px-0">
-                        <div class="col-12 mb-2">
+                        <div class="col-12 mb-2 form-group">
                             <label for="location"> Location </label>
-                            <input type="text" name="location" id="location" value="{{user_profile.location}}">
+                            <input type="text" name="location" id="location" value="{{user_profile.location}}" class="form-control">
                         </div>
                     </div>
 
                     <!-- Begin Role Selection -->
                     <div class="col-12 col-md-6 justify-content-center px-0 mb-2">
-                        <div class="col-12 mb-1">
+                        <div class="col-12 mb-1 form-group">
                             <label for="role">Role </label>
-                            <select id="role" name="role" value="{{user_profile.role}}" required>
+                            <select id="role" name="role" value="{{user_profile.role}}" class="form-control" required>
                                 {% if user_profile.role == None %}
                                 <option disabled selected value> -- select an option -- </option>
                                 {% endif %}
@@ -77,22 +77,22 @@
                     <!-- end of role selection -->
                 </div>
                 <div class="row px-3">
-                    <div class="col-12 col-md-6 justify-content-center px-0">
+                    <div class="col-12 col-md-6 justify-content-center px-0 form-group">
                         <div class="col-12 mb-1">
                             <label for="avatar-upload">Avatar </label>
                         </div>
                         <div class="col-12">
-                            <img width="100" height="100" src="{{ user_profile.avatar.url }}"/>
-                            <input class="mt-1 mb-1" type="file" name="avatar" id="avatar-upload" value="">
+                            <img width="120" height="auto" src="{{ user_profile.avatar.url }}"/>
+                            <input class="mt-1 mb-1 form-control" type="file" name="avatar" id="avatar-upload" value="">
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-6 justify-content-center px-0">
+                    <div class="col-12 col-md-6 justify-content-center px-0 form-group">
                         <div class="col-12">
                             <label for="bio">Bio </label>
                         </div>
                         <div class="col-12 mb-1">
-                            <textarea id="bio" name="bio" rows="4">{{user_profile.bio}}</textarea>
+                            <textarea id="bio" name="bio" rows="4" class="form-control">{{user_profile.bio}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -112,19 +112,22 @@
             </div>
             <div class="shadow p-3 mb-4 bg-white rounded">
                     <div class="row justify-content-center px-0 mt-4 mb-2">
-                        <form action="" method="POST">
+                        <form action="" method="POST" class="col-12 col-md-9 col-l-6">
                             {% csrf_token %}
                             <p class="text-center">Promote your website and other users know where they can find you and your work online.</p>
                             {% for link in social_links %}
-                                <li class="col-4">
-                                    <a href="{{ link.link }}" target="_blank" aria_label="User-created link, opens in a new tab" class="px-2">{{ link.site_name }}</a>
-                                    <a href="{% url 'delete-link' id=link.id %}"><i class="fas fa-trash-alt"></i></a>
+                                <li class="no-bullet py-1 d-flex justify-content-center border-bottom">
+                                    <div class="col-9 col-md-9 d-inline text-right"><a href="{{ link.link }}" target="_blank" aria_label="User-created link, opens in a new tab" class="px-2">{{ link.site_name }}</a></div>
+                                    <div class="col-3 col-md-3 d-inline text-left"><a href="{% url 'delete-link' id=link.id %}"><i class="fas fa-trash-alt accent1"></i></a></div>
                                 </li>
                                 {% endfor %}
-                            
-                            {{ SocialLinkForm }}
-                            <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
-                            <button class="btn btn-light"><a href="{% url 'index' %}">{% trans "Cancel" %}</a></button>
+                            <div class="row my-4">
+                                <div class="col-12 text-center">{{ SocialLinkForm }}</div>
+                                <div class="col-12 text-center"><button class="btn btn-primary mx-2" type="submit">{% trans "Save" %}</button>
+                                <button class="btn btn-light mx-2"><a href="{% url 'index' %}">{% trans "Cancel" %}</a></button></div>
+                                
+                                
+                            </div>
                         </form>
                     </div>
             </div>

@@ -8,6 +8,7 @@ Bootstrap 4 vs 5
 
 3. Bootstrap Docs, for example, alert dismiss button: https://getbootstrap.com/docs/4.0/components/alerts/#dismissing
 
+4. Special thanks to https://stackoverflow.com/users/18799377/samsparx
 
 
 Images:
