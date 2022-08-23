@@ -7,9 +7,7 @@
 <section class="container">
     {% paginate 10 posts %}
     {% for post in posts reversed %}
-    <!-- Post Template: -->
-    {% include 'post-template.html' %}
-    <!-- End of post template: -->
+        {% include 'post-template.html' %}
     {% endfor %}
     <div class="d-flex justify-content-between">
         {% show_pageitems %}<span id="pagination-nav">{% show_pages %}</span>

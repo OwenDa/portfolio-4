@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load paginate %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Profile " %}{{user_profile.user.username}}{% endblock %}
@@ -104,7 +105,7 @@
 
                 </div>
             </div>
-            <div class="col-12 col-md-8 order-1 order-md-2">
+            <div class="col-12 col-md-7 order-1 order-md-2">
                 <div class="container-fluid">
                     <!-- BIO -->
                     <div class="row">
@@ -115,7 +116,7 @@
                     </div>
                     <!-- POSTS -->
                     <div class="row">
-                        <h3 class="mb-3 text-uppercase">
+                        <h3 class="mb-3 text-uppercase col-12">
                             {% if num_user_posts == 1 %}
                                 {{ num_user_posts }} Post
                             {% else %}
@@ -123,13 +124,17 @@
                             {% endif %}
                         </h3>
                     </div>
-                    {% if num_user_posts > 0 %}
-                    {% for post in posts %}
-                    <!-- Post Template: -->
-                        {% include 'post-template.html' %}
-                    <!-- End of post template: -->
-                    {% endfor %}
-                    {% endif %}
+                    <div class="col-12">
+                        {% if num_user_posts > 0 %}
+                            {% paginate 5 posts %}
+                            {% for post in posts %}
+                                {% include 'post-template.html' %}
+                            {% endfor %}
+                            <div class="col-12 d-flex justify-content-between">
+                            {% show_pageitems %}<span id="pagination-nav">{% show_pages %}</span>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

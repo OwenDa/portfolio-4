@@ -22,3 +22,7 @@ Images:
 Microphone user2 post photo
 4. microphone image as user4 avatar: Photo by Pixabay from Pexels: https://www.pexels.com/photo/hand-metal-music-musician-33779/
 5. warm up post image Photo by Chris K: https://www.pexels.com/photo/football-speedladder-warmup-13204962/
+6. As one post image (user1) from https://www.flickr.com/photos/americanoperaprojects/43971649681
+
+Notes:
+Ignore X-Frame headers required to view on emulator sites like https://i.dev/amiresponsive 
