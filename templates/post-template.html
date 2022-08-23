@@ -1,8 +1,8 @@
 <!-- Post Template: -->
-<div class="card mt-4 mb-2 shadow rounded container">
+<div class="card mt-4 mb-2 shadow rounded container px-0">
     <!-- ROW 1 -->
     <a href="/profile/{{post.user}}" aria-label="Open user's profile">
-        <div class="card-header px-2 row align-items-center">
+        <div class="card-header row align-items-center mx-0 px-1">
             <div class="col-4 col-md-3 col-lg-2">
                 <img src="{{ post.user.profile.avatar.url }}" class="post-avatar avatar img-fluid"
                     aria-labelledby="post-user-full-name">
@@ -20,27 +20,27 @@
     <img class="card-img-top" src="{{ post.post_image.url }}" alt="" id="post-image">
     {% endif %}
     <!-- ROW 3 (Post date and written content) -->
-    <div class="card-body">
+    <div class="card-body px-xs-2 px-s-3">
         <p class="text-right" id="post-date">{{ post.created_at }}</p>
         <p class="card-text" id="post-text">{{ post.post_text }}</p>
-        <div class="card-footer">
-            <div class="row justify-content-between align-items-center">
-                <!-- "Applause" aka Likes -->
-                <div class="col-9 col-md-8">
-                    <p class="lead"><a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language accent1"></i></a> {{ post.no_of_applause }} applause</p>
-                </div>
-                <!-- Dropdown chevron for user options -->
-                {% if post.user == request.user %}
-                <!-- Future options may include share post, edit post, disable comments, bookmark/save; however, current options are of use to post-owner only. -->
-                <div class="col-3 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button"><a
-                                href="{% url 'delete-post' id=post.id %}">Delete Post</a></button>
-                    </div>
-                </div>
-                {% endif %}
+    </div>
+    <div class="card-footer mx-0">
+        <div class="row justify-content-between align-items-center">
+            <!-- "Applause" aka Likes -->
+            <div class="col-12 col-s-10 col-md-8">
+                <p class="lead"><a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language accent1"></i></a> {{ post.no_of_applause }} applause</p>
             </div>
+            <!-- Dropdown chevron for user options -->
+            {% if post.user == request.user %}
+            <!-- Future options may include share post, edit post, disable comments, bookmark/save; however, current options are of use to post-owner only. -->
+            <div class="col-1 col-s-2 col-md-4 text-right dropdown"><i class="fas fa-chevron-down"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item" type="button"><a
+                            href="{% url 'delete-post' id=post.id %}">Delete Post</a></button>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

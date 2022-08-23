@@ -5,12 +5,14 @@
 {% block content %}
 
 <section class="container">
-    {% paginate 10 posts %}
-    {% for post in posts reversed %}
-        {% include 'post-template.html' %}
-    {% endfor %}
-    <div class="d-flex justify-content-between">
-        {% show_pageitems %}<span id="pagination-nav">{% show_pages %}</span>
+    <div class="row">
+        {% paginate 10 posts %}
+        {% for post in posts reversed %}
+            {% include 'post-template.html' %}
+        {% endfor %}
+        <div class="d-flex justify-content-between">
+            {% show_pageitems %}<span id="pagination-nav">{% show_pages %}</span>
+        </div>
     </div>
 </section>
 {% endblock content %}

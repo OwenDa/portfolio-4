@@ -23,6 +23,14 @@ Microphone user2 post photo
 4. microphone image as user4 avatar: Photo by Pixabay from Pexels: https://www.pexels.com/photo/hand-metal-music-musician-33779/
 5. warm up post image Photo by Chris K: https://www.pexels.com/photo/football-speedladder-warmup-13204962/
 6. As one post image (user1) from https://www.flickr.com/photos/americanoperaprojects/43971649681
+7. User5's avatar is from https://www.pinterest.com/pin/171840542002547471/ listed under Creative Commons licence with attribution already printed within the image itself (link: http://aroundtheworldwithirina.blogspot.com/)
+8. User5 post (most expensive dress): licence obtained from Rights and Images Department
+National Portrait Gallery, London as per https://www.npg.org.uk/collections/search/use-this-image/?mkey=mw257493: Adelina Patti as Violetta in 'La Traviata'; as Lucia in 'Lucia de Lammermoor'; as herself; as Martha in 'Martha'; as Zerlina in 'Don Juan'
+
+by Ashford Brothers & Co, after Camille Silvy
+albumen carte-de-visite, circa 1861
+3 7/8 in. x 2 1/2 in. (98 mm x 63 mm) overall
+Given by Terence Pepper, 2014
 
 Notes:
 Ignore X-Frame headers required to view on emulator sites like https://i.dev/amiresponsive 
