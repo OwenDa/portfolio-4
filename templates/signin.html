@@ -75,9 +75,28 @@
         aria-hidden="true" class="img-fluid">
     </div>
   </div>
-  <div class="row align-content-center justify-content-center ">
-    <p class="mt-4 mb-2 col-10 text-justify"><a href="{% url 'signup' %}">Sign up</a> for the latest posts from your peers. Personalise your profile to share your professional and academic history and more.</p>
+
+  <!-- Details Section -->
+  <div class="row align-items-center">
+    <!-- Detail Panel-->
+    <div class="col-md-6 text-panel order-1 order-md-2 align-content-center">
+      <div class="row justify-content-center">
+        <h2>Stay Connected</h2>
+      </div>
+      <div class="row">
+        <div class="col-10 offset-1 pt-2">
+          <p class="lead text-justify"><a href="{% url 'signup' %}">Sign up</a> for the latest posts from your peers. Personalise your profile to share your professional and academic history and more.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Image Panel-->
+    <div class="col-md-6 px-0 order-2 order-md-1">
+      <img
+        src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661303645/static/images/about-image_1_vqj6mp.jpg"
+        aria-hidden="true" class="img-fluid">
+    </div>
   </div>
+
 </section>
 
 {% endblock %}
