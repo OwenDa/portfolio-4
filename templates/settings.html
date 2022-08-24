@@ -118,7 +118,7 @@
                             {% for link in social_links %}
                                 <li class="no-bullet py-1 d-flex justify-content-center border-bottom">
                                     <div class="col-9 col-md-9 d-inline text-right"><a href="{{ link.link }}" target="_blank" aria_label="User-created link, opens in a new tab" class="px-2">{{ link.site_name }}</a></div>
-                                    <div class="col-3 col-md-3 d-inline text-left"><a href="{% url 'delete-link' id=link.id %}"><i class="fas fa-trash-alt accent1"></i></a></div>
+                                    <div class="col-3 col-md-3 d-inline text-left"><a href="{% url 'delete-link' id=link.id %}" aria-label="Click to delete {{ link.site_name }}"><i class="fas fa-trash-alt accent1"></i></a></div>
                                 </li>
                                 {% endfor %}
                             <div class="row my-4">

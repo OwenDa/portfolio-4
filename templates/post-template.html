@@ -28,7 +28,7 @@
         <div class="row justify-content-between align-items-center">
             <!-- "Applause" aka Likes -->
             <div class="col-12 col-s-10 col-md-8">
-                <p class="lead"><a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language accent1" id="applause-icon"></i></a> {{ post.no_of_applause }} applause</p>
+                <p class="lead"><a href="/post-applause?post_id={{ post.id }}"><i class="fas fa-sign-language accent1" id="applause-icon" aria-label="Click to give or remove applause"></i></a> {{ post.no_of_applause }} applause</p>
             </div>
             <!-- Dropdown chevron for user options -->
             {% if post.user == request.user %}
