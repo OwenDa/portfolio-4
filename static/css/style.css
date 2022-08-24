@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 body {
     background: #fafafa;
     padding-top: 50px;
@@ -14,7 +21,7 @@ a {
 }
 
 .accent1 {
-    color: var(--accent1)
+    color: var(--accent1);
 }
 
 .btn-primary {
@@ -24,7 +31,7 @@ a {
 }
 
 .btn-light {
-    border-color: --accent2;
+    border-color: var(--accent2);
 }
 
 /* SIGN-IN PAGE */
@@ -46,6 +53,8 @@ a {
 
 #mainNav.navbar.scrolled {
     background: rgb(236, 234, 238) !important;
+    -webkit-transition: background-color 500ms !important;
+    -o-transition: background-color 500ms !important;
     transition: background-color 500ms !important;
     border-bottom: 1px solid rgb(213, 213, 214);
 }

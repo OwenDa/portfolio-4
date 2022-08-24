@@ -26,9 +26,12 @@ def index(request):
     # User->Profile allows for select_related to be used; otherwise
     # prefetch_related would be required follow a foreignkey.
 
+    page_title = 'Home'
+
     context = {
         'user_profile': user_profile,
-        'posts': posts, }
+        'posts': posts,
+        'page_title': page_title, }
 
     return render(request, 'index.html', context)
 
@@ -37,6 +40,7 @@ def signup(request):
     """
     Validate user input and create user object with blank profile
     """
+
     if request.method == 'POST':
         # assign form input as variables
         username = request.POST['username']
@@ -122,7 +126,8 @@ def profile(request, pk):
     # find all user's posts
     num_user_posts = len(posts)
 
-    history_items = HistoryItem.objects.filter(user=user_object).order_by('year')
+    history_items = HistoryItem.objects.filter(
+        user=user_object).order_by('year')
     YEAR_CHOICES = reversed(
         [(y, y)for y in range(1950, datetime.date.today().year+2)])
     # used to populate year select field with range 1950-present +2
@@ -138,6 +143,9 @@ def profile(request, pk):
         else:
             messages.info(request, 'Error: Invalid Form')
 
+    page_name = user_object.username
+    page_title = f'{page_name} Profile'
+
     context = {
         'user_object': user_object,
         'user_profile': user_profile,
@@ -145,7 +153,8 @@ def profile(request, pk):
         'posts': posts,
         'num_user_posts': num_user_posts,
         'history_items': history_items,
-        'YEAR_CHOICES': YEAR_CHOICES, }
+        'YEAR_CHOICES': YEAR_CHOICES,
+        'page_title': page_title, }
     # returning multiple variables, so using a context to bundle together.
     return render(request, 'profile.html', context)
 
@@ -153,6 +162,8 @@ def profile(request, pk):
 @login_required(login_url='signin')
 def settings(request):
     """ Functions as profile edit page """
+    page_title = 'Settings'
+
     user_profile = Profile.objects.get(user=request.user)
     # create variable user_profile to include all objects
     # in the current user's profile
@@ -202,7 +213,8 @@ def settings(request):
     context = {
         'user_profile': user_profile,
         'SocialLinkForm': SocialLinkForm,
-        'social_links': social_links}
+        'social_links': social_links,
+        'page_title': page_title}
     return render(request, 'settings.html', context)
 
 

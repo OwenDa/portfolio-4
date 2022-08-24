@@ -3,15 +3,13 @@
 {% load paginate %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Profile " %}{{user_profile.user.username}}{% endblock %}
-
 {% block content %}
 <!-- Profile Header-->
 <section class="container py-4">
     <div class="row align-items-center mb-2">
         <div class="col-xs-10 offset-xs-1 col- col-md-3">
             <img src="{{ user_profile.avatar.url }}" class="profile-avatar avatar mx-2"
-                aria-labelledby="user-full-name" alt="">
+                aria-labelledby="profile-name-display" alt="">
         </div>
         <div class="col-xs-10 offset-xs-1 col-md-9 mt-3">
             <div class="row">
@@ -23,7 +21,6 @@
                         {% else %}
                             {{ user_profile.user.username }}
                         {% endif %}
-                        </h2>
                     </a>
                 </div>
             </div>
@@ -41,7 +38,7 @@
                     {% elif user_profile.user.username == request.user.username %}
                         <h4>Input your <a href="{% url 'settings' %}">Location</a></h4>
                     {% else %}
-                        <h4>Location: Unknown</a></h4>
+                        <h4>Location: Unknown</h4>
                     {% endif %}
                 </div>
             </div>
@@ -56,7 +53,7 @@
                     <div class="row">
                         {% for link in social_links %}
                         <div class="col-xs-12 col-s-6 col-md-4 d-inline">
-                            <a href="{{ link.link }}" target="_blank" aria_label="User-created link, opens in a new tab"
+                            <a href="{{ link.link }}" target="_blank"
                                 class="px-2">{{ link.site_name }} <i class="fas fa-external-link-alt"></i></a></div>
                         {% if forloop.counter|divisibleby:3 %}
                     </div>
