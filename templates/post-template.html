@@ -17,7 +17,7 @@
     </a>
     <!-- ROW 2 (Image in post, if any) -->
     {% if post.post_image %}
-    <img class="card-img-top" src="{{ post.post_image.url }}" alt="" id="post-image">
+    <img class="card-img-top" src="{{ post.post_image.url }}" alt="" id="post-image" aria-labelledby="post-text">
     {% endif %}
     <!-- ROW 3 (Post date and written content) -->
     <div class="card-body px-xs-2 px-s-3">
