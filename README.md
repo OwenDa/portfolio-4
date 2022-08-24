@@ -32,5 +32,7 @@ albumen carte-de-visite, circa 1861
 3 7/8 in. x 2 1/2 in. (98 mm x 63 mm) overall
 Given by Terence Pepper, 2014
 
+9. Shouting man image (user2 post) from: https://www.flickr.com/photos/ter-burg/8127283172 
+
 Notes:
 Ignore X-Frame headers required to view on emulator sites like https://i.dev/amiresponsive 

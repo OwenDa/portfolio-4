@@ -18,7 +18,7 @@ def index(request):
     # set user profile to that of user_object (current user)
 
     posts = Post.objects.all().select_related(
-        'user__profile').order_by("created_at")
+        'user__profile').order_by("-created_at")
     # Alternative to posts = Post.objects.all(), note the double underscore.
     # Template reference works the same (post.user.profile to access profile
     # of post.user aka post author) but the info for each post author is
