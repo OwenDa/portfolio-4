@@ -103,7 +103,21 @@ Wireframe sketches were drawn up in Balsamiq.
     
 ## Features  
 
+### Responsive Design
+
+Opera Ireland is fully responsive and can be enjoyed on a wide range of devices. The site and its content will adapt to create the best user experience.
+
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344459/static/images/responsive-profile_1_kjw3kj.png" alt="Fully responsive profile page shown on screen emulators of varying sizes" width="75%" height="auto">
+
+### Sign In & Sign Up
+
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344459/static/images/signup-responsive_1_qwogw1.png" alt="Fully responsive sign up page shown on screen emulators of varying sizes" width="75%" height="auto">  
+
+Users can sign up to create an individual profile and access full site features. When signing up, the user is asked to create a username and informed that this will form part of their unique profile url.
+
 After signing up for the first time, the user is directed to their settings page, allowing them to customise their profile. After this initial log-in, all future log-ins will direct the user to the index page which houses the main post feed.
+
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344459/static/images/responsive-signin_1_szsqvt.png" alt="Fully responsive sign in page shown on screen emulators of varying sizes" width="75%" height="auto">  
 
 ### Post Feed
 
@@ -126,9 +140,50 @@ The profile contains user-specific information which can be customised from the 
 -	[User4](https://opera-ireland.herokuapp.com/profile/user4)
 -	[User5](https://opera-ireland.herokuapp.com/profile/user5) 
 
+As can be seen from these example users, profile features include displaying basic user information, user posts, professional history timeline and links to other sites such as social media 
+
 Profiles are rendered differently according to whether the viewer is the profile-owner or not. For example, only profile owners can see controls to add/edit history items. Similarly, prior to profile customisation, the profile owner will see prompts to complete their profile, while other users see only empty or blank fields.
 
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661345428/static/images/user3-differing-views_1_stv5s2.png" alt="Comparison of profile-owner versus profile-viewer renderings of an incomplete profile" width="75%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661345428/static/images/user3-differing-views_1_stv5s2.png" alt="Comparison of profile-owner versus profile-viewer renderings of an incomplete profile" width="100%" height="auto">  
+  
+### Settings
+  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661346664/static/images/profile-settingsview_1_b2oicf.png" alt="Profile settings page completed and incomplete." width="100%" height="auto">  
+  
+The user can customise their profile from their Settings page. Login is required for this feature as each settings page is related to its owners profile.
+
+Two forms are included, one for basic profile details such as first and last name, avatar, bio, location and so on. This form also features a reminder to the user of their personal url (/profile/username). The second form allows the user to add or remove external links.
+
+### Applause (Like Post)
+   
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661347224/static/images/like-post_1_jossed.png" alt="Example post with 1 applause." width="75%" height="auto">  
+  
+Emulating the popular "Like" feature found in many such sites, Opera Ireland users can show appreciation for posts with the "applause" feature. Should the user change their mind, clicking or tapping the applause icon again will "unlike" the post.
+
+### Create Post
+  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661347000/static/images/newpost_1_v2q7lb.png" alt="Create new post modal form" width="75%" height="auto">  
+  
+A logged-in user can create a new post from any page on the site, using the "New Post" option on the navigation bar. Posts can feature text (required) and one image (optional). Should the user change their mind, this dialog can simply be closed.
+
+Once published, posts feature the post content, the author's avatar, full name if saved to their profile and username, all of which link to the author's profile. In addition, an "applause" icon and "applause" counter are shown. Where the viewer is the logged in user, posts also feature a Delete Post option.
+  
+### Future Features  
+In future, it would be ideal to add a search function which allows logged-in users to search for others by username or by role-type. It is with this latter function in mind that "role" must be chosen from a list rather than allowing user's to type freely; the aim is to generate more accurate results when the user searches for all profiles with the role-type "Soprano" for instance.
+
+Comments could be added to posts, allowing for a more social and conversational interaction.
+
+An additional account type, that of "Venue" could be added, allowing operatic venues to promote their productions on the site.
+  
+## Testing  
+### Manual Testing  
+In large part, testing was carried out manually through the development process, checking that each function worked as expected and checking whether various user behaviours or choices were appropriately handled.  
+  
+  
+### Accessibility Testing
+
+
+
 
 1. https://groups.google.com/g/django-users/c/al95x1TXFV4/m/7mCCWQE3jtAJ
 Year choices code (history items)
