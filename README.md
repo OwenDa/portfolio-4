@@ -99,7 +99,19 @@ The site employs a simple UI, with many standard UI components already familiar 
 
 Bootstrap 4 was chosen, over Bootstrap 5, for use with jQuery and support IE 10 and 11.
   
-Wireframe sketches were drawn up in Balsamiq.
+Wireframe sketches were drawn up in Balsamiq. These reflect basic layout considerations rather than aesthetics.
+
+*Profile Page Wireframe*
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/New_Wireframe_1_copy_2_w8lxso.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
+
+*Post Feed Wireframe*
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/New_Wireframe_1_copy_k286tk.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
+
+*Settings Page Wireframe*
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/New_Wireframe_1_copy_3_nyv3mw.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
+
+*Sign Up & Sign In Pages Wireframe*
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/New_Wireframe_1_cjf6yn.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
     
 ## Features  
 
@@ -174,50 +186,88 @@ In future, it would be ideal to add a search function which allows logged-in use
 Comments could be added to posts, allowing for a more social and conversational interaction.
 
 An additional account type, that of "Venue" could be added, allowing operatic venues to promote their productions on the site.
+
+Significant improvements might be made by allowing users to add ALT text to their own images,
   
 ## Testing  
 ### Manual Testing  
 In large part, testing was carried out manually through the development process, checking that each function worked as expected and checking whether various user behaviours or choices were appropriately handled.  
-  
-  
+
 ### Accessibility Testing
+For testing the contrast level of the various background and font colours used, [Coolers.co](https://coolors.co/contrast-checker) was employed. The primary accent colour was found to possess good contrast at all sizes, while the secondary accent colour was found unsuitable for small text and better suited to larger text. This colour is used to highlight links throughout the site, most of which are large headings. 
+
+The developer manually tested to ensure that all features can be navigated via keyboard.
+
+### Validators & Tools 
+
+JavaScript code was run through [jsvalidator.com](https://jsvalidator.com/) with no errors or warnings.  
+  
+Both CSS and HTML were validated through the W3C's official validators. There were no errors in the CSS and the only warnings present were identifying vendor extensions added via [Autoprefixer](https://css-tricks.com/autoprefixer/) to improve browser compatibility, along with a reminder that CSS variables are not currently checked by the service.  
+
+<p>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS icon provided by the CSS Validator" />
+    </a>
+</p>  
+  
+HTML was largely found valid; however, the use of Django's template language within the HTML markup language does cause some issues in validation. In the case of the base.html file, the initial template tags which precede DOCTYPE must first be removed as these cause an error which will prevent a full and complete check of the document. Similarly, template tag symbols such as `{` and `}`cause Bad Value errors; however, these are essentially not HTML and cannot be assessed as such. These errors can therefore be ignored.
+
+The developer also reviewed any warnings concerning accessibility issues (namely, regarding decorative images) and judged the code to be acceptable as it stands.
+   
+[Google's Lighthouse tool](https://developers.google.com/web/tools/lighthouse) in Chrome's Dev tools was used to generate scores on Performance, Accessibility, Best Practices and SEO.
+
+Some aspects of the site hinder this score, such as non-unique aria-ids on posts; however, this is caused by multiple posts being rendered from a single template. Similarly, decorative images have empty alt tags but do make use of aria-label and aria-labelledby where logical.
+
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/mobile-signin-lighthouse_tddzoy.png" alt="Google's Lighthouse scores  for mobile view of signing page: Performance 69, Accessibility 97, Best Practice 92, SEO 91." width="50%" height="auto">  
+  
+Significant improvements might be made by allowing users to add ALT text to their own images, and certain heading-levels should be revised.
+
+## Deployment  
+<details><summary>
+Click to Expand: Deployment Procedure
+</summary></br>  
+  
+### Heroku  
+The site was deployed to Heroku using the following procedure. Before beginning, ensure that requirements.txt is up to date.    
+1. An account must first be created on [Heroku.com](https://www.heroku.com/)  
+2. Once logged in, select "Create new app".  
+3. The app must then be given a unique name and the developer's region must be selected from a list of options.  
+4. From the Settings tab of the next screen, select "Reveal config vars".  
+5. A Cloudinary url, database url, port and secret key are required config vars which can be added in the Heroku project settings.
+6. Within the deploy section, select GitHub as the deployment method and authorise.
+7. Input the name of the GitHub repository and click "Search", followed by "Connect".  
+8. Choose either "Automatic deploys" or "Manual deploy". In this case, the developer opted for manual deploy for the initial deployment and, having verified that deployment was successful, enabled automatic deploys thereafter.  
+9. Select the appropriate branch from which to deploy (in this case, the project had only the Main branch at the time of deployment).
 
 
+### Forking & Cloning Repositories  
+Forking a repository allows one to make a copy with which to experiment without affecting or jeopardising the original. This does not require any special permissions from or direct contact with the original developer provided the repository in question is public rather than private. You may wish to do this either to experiment with and learn from another party's code or aid in improving an open-source project by offering changes (note that forking is distinct from [branching](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)). To do this, one must have a GitHub account and be logged in. Then, simply visit the main page of the repository in question, and select the "Fork" option located in the upper-right corner (desktop) as shown in the image below. [Learn more about forks from GitHub Docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).  
 
+Forking a repository does not create locally-stored copies of its files on your computer. To achieve this, you will also need to Clone the repository. For example, you may wish to do this if you wish to have a functioning copy of another party's code in under to compile and execute it locally. Cloning options are found under the "Code" drop-down button of a repository's main page, as shown in the image below. [Learn more about cloning from GitHub Docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#cloning-your-forked-repository).  
+</details>  
 
-1. https://groups.google.com/g/django-users/c/al95x1TXFV4/m/7mCCWQE3jtAJ
-Year choices code (history items)
-
-2. https://www.geeksforgeeks.org/difference-between-bootstrap-4-and-bootstrap-5/
-Bootstrap 4 vs 5
-
-3. Bootstrap Docs, for example, alert dismiss button: https://getbootstrap.com/docs/4.0/components/alerts/#dismissing
-
-4. Special thanks to https://stackoverflow.com/users/18799377/samsparx
-
-5. django-simple-pagination docs: https://django-simple-pagination.readthedocs.io/en/latest/index.html and pypi link: https://pypi.org/project/django-simple-pagination/
-
-
-Images:
-1. Photo by Anderson Guerra: https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/
-"Áine Murphy" profile avatar (user1)
-2. Photo by ANTONI SHKRABA production: https://www.pexels.com/photo/a-man-singing-emotionally-8043761/
-"John Lansbury" profile avatar (user2)
-3. Photo by Pixabay: https://www.pexels.com/photo/tilt-shift-photograph-of-gray-and-black-microphone-164879/
-Microphone user2 post photo
-4. microphone image as user4 avatar: Photo by Pixabay from Pexels: https://www.pexels.com/photo/hand-metal-music-musician-33779/
-5. warm up post image Photo by Chris K: https://www.pexels.com/photo/football-speedladder-warmup-13204962/
-6. As one post image (user1) from https://www.flickr.com/photos/americanoperaprojects/43971649681
-7. User5's avatar is from https://www.pinterest.com/pin/171840542002547471/ listed under Creative Commons licence with attribution already printed within the image itself (link: http://aroundtheworldwithirina.blogspot.com/)
-8. User5 post (most expensive dress): licence obtained from Rights and Images Department
-National Portrait Gallery, London as per https://www.npg.org.uk/collections/search/use-this-image/?mkey=mw257493: Adelina Patti as Violetta in 'La Traviata'; as Lucia in 'Lucia de Lammermoor'; as herself; as Martha in 'Martha'; as Zerlina in 'Don Juan'
-
-by Ashford Brothers & Co, after Camille Silvy
-albumen carte-de-visite, circa 1861
-3 7/8 in. x 2 1/2 in. (98 mm x 63 mm) overall
-Given by Terence Pepper, 2014
-
-9. Shouting man image (user2 post) from: https://www.flickr.com/photos/ter-burg/8127283172 
-
-Notes:
-Ignore X-Frame headers required to view on emulator sites like https://i.dev/amiresponsive 
+## Acknowledgements 
+1. Screenshot images were compressed with [TinyPNG.com](https://tinypng.com/)
+2. Large credit is due to [this tutorial](https://youtu.be/xSUm6iMtREA), however much the end-result of the project may differ from the examples shown.
+3. Equally, [Code Institute](https://codeinstitute.net)'s Django tutorials are owed significant credit.
+4. [Coolers.co](https://coolors.co) was used as described in the [Design Statement](#design-statement).
+6. [Stack Overflow](https://stackoverflow.com/) was consulted several times in troubleshooting, but special thanks is owed to user [SamSparkx](https://stackoverflow.com/users/18799377/samsparx) for assistance given in answer to [this question](https://stackoverflow.com/questions/73439361/how-do-i-access-objects-user-info-across-django-models-foreign-key-beginner/73440194#73440194).
+7. As indicated by the automatically generated credit preserved in the CSS file, the CSS code was prefixed by Autoprefixer.
+ 8. Bootstrap's excellent documentation was consulted, for example in the construction of an [alert dismiss button](https://getbootstrap.com/docs/4.0/components/alerts/#dismissing "https://getbootstrap.com/docs/4.0/components/alerts/#dismissing").
+ 9. [i.dev/amiresponsive](https://i.dev/amiresponsive) was used for screenshots to demonstrate responsiveness (note that an extension such as "Ignore X-Frame headers" is required to view this project in its current deployment).
+ 10. Most images were drawn from [Pexels.com](https://www.pexels.com/).
+ 
+### Image Credits:
+1. ["Áine Murphy" profile avatar (user1)](https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/ "https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/"): Photo by Anderson Guerra:  
+2. ["John Lansbury" profile avatar (user2)](https://www.pexels.com/photo/a-man-singing-emotionally-8043761/ "https://www.pexels.com/photo/a-man-singing-emotionally-8043761/"). Photo by ANTONI SHKRABA.
+3. [Microphone user2 post photo](https://www.pexels.com/photo/tilt-shift-photograph-of-gray-and-black-microphone-164879/ "https://www.pexels.com/photo/tilt-shift-photograph-of-gray-and-black-microphone-164879/"). Photo by Pixabay.
+4.  [Microphone image as user4 avatar](https://www.pexels.com/photo/hand-metal-music-musician-33779/). Photo by Pixabay.
+5.  ['Warm up' post image](https://www.pexels.com/photo/football-speedladder-warmup-13204962). Photo by Chris K.
+6.  ['As One' post image (user1)](https://www.flickr.com/photos/americanoperaprojects/43971649681).
+7.  [User5's avatar](https://www.pinterest.com/pin/171840542002547471) as listed under Creative Commons licence with attribution already printed within the image itself and [additional link to source here](http://aroundtheworldwithirina.blogspot.com).
+8.  [User5 post (most expensive dress)](https://www.npg.org.uk/collections/search/use-this-image/?mkey=mw257493):  Adelina Patti as Violetta in 'La Traviata'; as Lucia in 'Lucia de Lammermoor'; as herself; as Martha in 'Martha'; as Zerlina in 'Don Juan'
+by Ashford Brothers & Co, after Camille Silvy albumen carte-de-visite, circa 1861 3 7/8 in. x 2 1/2 in. (98 mm x 63 mm) overall Given by Terence Pepper, 2014.
+Licence obtained from Rights and Images Department National Portrait Gallery, London.
+9.  [Shouting man image (user2 post)](https://www.flickr.com/photos/ter-burg/8127283172).
