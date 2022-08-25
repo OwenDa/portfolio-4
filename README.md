@@ -66,6 +66,7 @@ Tertiary features exist to be considered in later development under their own us
   + Javascript
   + Python
   + Django's Template Language (similar to Jinja2)
+  + DBML (used only for [database model diagram below]())
 
 2. Libraries & Frameworks
   + Django 3.2
@@ -112,6 +113,95 @@ Wireframe sketches were drawn up in Balsamiq. These reflect basic layout conside
 
 *Sign Up & Sign In Pages Wireframe*
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/New_Wireframe_1_cjf6yn.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
+
+### Database Structure
+The diagram below demonstrates the relationships between the project's models (database tables). This was written in DBML (Database Markup Language) with the aid of [dbdiagram.io](https://dbdiagram.io/docs) which provides some useful animations that lend additional context to the diagram. Click the image below to view the animated version in a new tab:
+
+<a href="https://dbdiagram.io/d/6307eb52f1a9b01b0fe647c5" target=_blank aria-label="Click to open Entity Relationship Diagram in more detail"><img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661468780/static/images/opera-ireland-erd_hp5zzl.png" alt="Entity Relationship Diagram for the Opera Ireland site as of August 2022." width="100%" height="auto"></a>
+
+<details><summary>Cllick to view as DBML code</summary>
+
+```
+  //// -- ERD for Opera Ireland
+  //// -- opera-ireland.herokuapp.com
+
+  //// -- This is a learning project created by:
+  //// -- https://github.com/OwenDa/portfolio-4
+
+
+  Table django_contrib_auth_models.User {
+    username varchar
+    // One-to-one relationship with Profile.user
+    password hash
+    is_staff boolean
+    is_active boolean
+    is_superuse boolean
+    last_login datetime
+    date_joined datetime
+      Indexes {
+      (username) [pk]
+      }
+  }
+
+
+  Table models.Profile {
+      user varchar
+      // One-to-one relationship with django's User.username
+      // One-to-many relationships with SocialLink, HistoryItem and Post.
+      first_name varchar
+      last_name varchar
+      id_user int
+      bio text
+      location varchar
+      avatar image
+      role varchar
+  }
+
+      
+  Table models.SocialLink {
+      user varchar
+      // Many-to-one from this view point.
+      link url
+      site_name varchar
+  }
+
+
+  Table models.HistoryItem {
+      user varchar
+      // Many-to-one from this viewpoint.
+      history_heading varchar
+      history_details varchar
+      history_role varchar
+      year int
+  }
+
+
+  Table models.Post {
+      id UUID [pk]
+      user varchar
+      // Many-to-one from this viewpoint.
+      post_image image
+      post_text text
+      created_at datetime
+      no_of_applause int
+  }
+
+
+  Table models.PostApplause {
+      post_id varchar
+      username varchar
+  }
+
+
+  Ref: django_contrib_auth_models.User.username - models.Profile.user
+  Ref: models.Profile.user < models.SocialLink.user
+  Ref: models.Profile.user < models.HistoryItem.user
+  Ref: models.Profile.user < models.Post.user
+  Ref: models.PostApplause.post_id - models.Post.id
+  ```
+
+</details>
+
     
 ## Features  
 
@@ -258,6 +348,7 @@ Forking a repository does not create locally-stored copies of its files on your 
  8. Bootstrap's excellent documentation was consulted, for example in the construction of an [alert dismiss button](https://getbootstrap.com/docs/4.0/components/alerts/#dismissing "https://getbootstrap.com/docs/4.0/components/alerts/#dismissing").
  9. [i.dev/amiresponsive](https://i.dev/amiresponsive) was used for screenshots to demonstrate responsiveness (note that an extension such as "Ignore X-Frame headers" is required to view this project in its current deployment).
  10. Most images were drawn from [Pexels.com](https://www.pexels.com/).
+ 11. [dbdiagram.io](https://dbdiagram.io/docs) was used to create the [ERD above](#database-structure).
  
 ### Image Credits:
 1. ["Áine Murphy" profile avatar (user1)](https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/ "https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/"): Photo by Anderson Guerra:  
@@ -271,3 +362,4 @@ Forking a repository does not create locally-stored copies of its files on your 
 by Ashford Brothers & Co, after Camille Silvy albumen carte-de-visite, circa 1861 3 7/8 in. x 2 1/2 in. (98 mm x 63 mm) overall Given by Terence Pepper, 2014.
 Licence obtained from Rights and Images Department National Portrait Gallery, London.
 9.  [Shouting man image (user2 post)](https://www.flickr.com/photos/ter-burg/8127283172).
+
