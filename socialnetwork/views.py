@@ -180,6 +180,7 @@ def settings(request):
                 new_link = form.save(commit=False)
                 new_link.user = request.user  # The logged-in user
                 new_link.save()
+                messages.success(request, 'Success! You added a new link to your profile.')
                 return redirect('settings')
 
         if request.FILES.get('avatar') is None:
