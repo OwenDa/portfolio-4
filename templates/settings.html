@@ -119,8 +119,9 @@
                                     <div class="col-3 col-md-3 d-inline text-left"><a href="{% url 'delete-link' id=link.id %}" aria-label="Click to delete {{ link.site_name }}"><i class="fas fa-trash-alt accent1"></i></a></div>
                                 </li>
                                 {% endfor %}
-                            <div class="row my-4">
+                            <div class="row my-4 justify-content-center">
                                 <div class="col-12 text-center">{{ SocialLinkForm }}</div>
+                                <small class="col-10 col-md-12 py-2 text-center">Be sure to add the full url, eg. https://twitter.com/IrishNatOpera</small>
                                 <div class="col-12 text-center"><button class="btn btn-primary mx-2" type="submit">{% trans "Save" %}</button>
                                 <button class="btn btn-light mx-2"><a href="{% url 'index' %}">{% trans "Cancel" %}</a></button></div>
                                 
