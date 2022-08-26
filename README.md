@@ -283,6 +283,8 @@ Significant improvements might be made by allowing users to add ALT text to thei
 ### Manual Testing  
 In large part, testing was carried out manually through the development process, checking that each function worked as expected and checking whether various user behaviours or choices were appropriately handled.  
 
+For test cases, please see [TESTING.md](TESTING.md).
+
 ### Accessibility Testing
 For testing the contrast level of the various background and font colours used, [Coolers.co](https://coolors.co/contrast-checker) was employed. The primary accent colour was found to possess good contrast at all sizes, while the secondary accent colour was found unsuitable for small text and better suited to larger text. This colour is used to highlight links throughout the site, most of which are large headings. 
 
