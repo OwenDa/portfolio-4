@@ -114,7 +114,7 @@ def profile(request, pk):
     View to render profile.html/ per user,
     based on primary key (pk), see urls.py
     """
-    user_object = User.objects.get(username=pk)
+    user_object = User.objects.get_object_or_404(username=pk)
     # create variable 'user_object' by getting the user (object in User table)
     # where username is equal to the pk passed in (ie. that used in the url)
 

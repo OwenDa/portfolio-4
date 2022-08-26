@@ -277,7 +277,7 @@ Comments could be added to posts, allowing for a more social and conversational 
 
 An additional account type, that of "Venue" could be added, allowing operatic venues to promote their productions on the site.
 
-Significant improvements might be made by allowing users to add ALT text to their own images,
+Significant improvements might be made by allowing users to add ALT text to their own images.
   
 ## Testing  
 ### Manual Testing  
@@ -294,7 +294,6 @@ For test cases, please visit the follow:
   - [testing-settings-screen.md](testing/testing-settings-screen.md)
   - [testing-profile-screen.md](testing/testing-profile-screen.md)
   - [testing-other.md](testing/testing-other.md)
-
 
 
 ### Accessibility Testing
@@ -351,6 +350,10 @@ Forking a repository allows one to make a copy with which to experiment without 
 
 Forking a repository does not create locally-stored copies of its files on your computer. To achieve this, you will also need to Clone the repository. For example, you may wish to do this if you wish to have a functioning copy of another party's code in under to compile and execute it locally. Cloning options are found under the "Code" drop-down button of a repository's main page, as shown in the image below. [Learn more about cloning from GitHub Docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#cloning-your-forked-repository).  
 </details>  
+
+## Known Bugs
+1. New Post File Upload: Inappropriate file types are not currently handled with anything other than a Djano standard error page.
+2. 
 
 ## Acknowledgements 
 1. Screenshot images were compressed with [TinyPNG.com](https://tinypng.com/)
