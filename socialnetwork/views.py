@@ -114,7 +114,7 @@ def profile(request, pk):
     View to render profile.html/ per user,
     based on primary key (pk), see urls.py
     """
-    user_object = User.objects.get_object_or_404(username=pk)
+    user_object = User.objects.get(username=pk)
     # create variable 'user_object' by getting the user (object in User table)
     # where username is equal to the pk passed in (ie. that used in the url)
 
@@ -180,7 +180,8 @@ def settings(request):
                 new_link = form.save(commit=False)
                 new_link.user = request.user  # The logged-in user
                 new_link.save()
-                messages.success(request, 'Success! You added a new link to your profile.')
+                messages.success(
+                    request, 'Success! You added a new link to your profile.')
                 return redirect('settings')
 
         if request.FILES.get('avatar') is None:
@@ -319,3 +320,21 @@ def post_applause(request):
         post.save()
         messages.info(request, 'Applause removed.')
         return redirect(request.META['HTTP_REFERER'])
+
+
+def handle_404():
+    """
+    General 404 page with link to return 'Home'
+    ie. index (or singin for logged out user)
+    """
+    response = render_to_response('404.html')
+    return response
+
+
+def handle_500():
+    """
+    General 404 page with link to return 'Home'
+    ie. index (or singin for logged out user)
+    """
+    response = render_to_response('500.html')
+    return response

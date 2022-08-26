@@ -353,7 +353,7 @@ Forking a repository does not create locally-stored copies of its files on your 
 
 ## Known Bugs
 1. New Post File Upload: Inappropriate file types are not currently handled with anything other than a Djano standard error page.
-2. 
+
 
 ## Acknowledgements 
 1. Screenshot images were compressed with [TinyPNG.com](https://tinypng.com/)
@@ -366,6 +366,8 @@ Forking a repository does not create locally-stored copies of its files on your 
  9. [i.dev/amiresponsive](https://i.dev/amiresponsive) was used for screenshots to demonstrate responsiveness (note that an extension such as "Ignore X-Frame headers" is required to view this project in its current deployment).
  10. Most images were drawn from [Pexels.com](https://www.pexels.com/).
  11. [dbdiagram.io](https://dbdiagram.io/docs) was used to create the [ERD above](#database-structure).
+ 12. Credit to [Stackoverflow thread](https://stackoverflow.com/questions/17662928/
+    django-creating-a-custom-500-404-error-page) for insight on the creation of 404 and 500 handler functions.
  
 ### Image Credits:
 1. ["Áine Murphy" profile avatar (user1)](https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/ "https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/"): Photo by Anderson Guerra:  
