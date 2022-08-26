@@ -40,6 +40,9 @@ def signup(request):
     """
     Validate user input and create user object with blank profile
     """
+    if request.user.username:
+        messages.info(request,
+                      'You are currently logged into your existing account.')
 
     if request.method == 'POST':
         # assign form input as variables
