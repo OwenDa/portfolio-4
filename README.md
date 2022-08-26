@@ -283,8 +283,19 @@ Significant improvements might be made by allowing users to add ALT text to thei
 ### Manual Testing  
 In large part, testing was carried out manually through the development process, checking that each function worked as expected and checking whether various user behaviours or choices were appropriately handled.  
 
-For test cases, please see [testing-urls.md](testing-urls.md).
-Testing[testhtml.md](testhtml.md)
+For test cases, please visit the follow:
+  - [testing-urls.md](testing/testing-urls.md)
+  - [testing-signin-screen.md](testing/testing-signin-screen.md)
+  - [testing-signup-screen.md](testing/testing-signup-screen.md)
+  - [testing-navigation.md](testing/testing-navigation.md)
+  - [testing-new-post-modal.md](testing/testing-new-post-modal.md)
+  - [testing-post-feed.md](testing/testing-post-feed.md)
+  - [testing-posts.md](testing/testing-posts.md)
+  - [testing-settings-screen.md](testing/testing-settings-screen.md)
+  - [testing-profile-screen.md](testing/testing-profile-screen.md)
+  - [testing-other.md](testing/testing-other.md)
+
+
 
 ### Accessibility Testing
 For testing the contrast level of the various background and font colours used, [Coolers.co](https://coolors.co/contrast-checker) was employed. The primary accent colour was found to possess good contrast at all sizes, while the secondary accent colour was found unsuitable for small text and better suited to larger text. This colour is used to highlight links throughout the site, most of which are large headings. 
