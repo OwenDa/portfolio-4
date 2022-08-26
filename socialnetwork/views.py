@@ -125,7 +125,7 @@ def profile(request, pk):
 
     social_links = SocialLink.objects.filter(user=user_object)
 
-    posts = Post.objects.filter(user=user_object)
+    posts = Post.objects.filter(user=user_object).order_by('-created_at')
     # find all user's posts
     num_user_posts = len(posts)
 
