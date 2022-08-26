@@ -254,7 +254,8 @@ def delete_post(request, id):
     post = Post.objects.get(id=id)
     post.delete()
     messages.warning(request, 'Post deleted.')
-    return redirect(f'/profile/{request.user.username}')
+    # return redirect(f'/profile/{request.user.username}')
+    return redirect(request.META['HTTP_REFERER'])
 
 
 @login_required(login_url='signin')
@@ -306,7 +307,8 @@ def post_applause(request):
         post.no_of_applause = post.no_of_applause+1
         post.save()
         # save new applause object, update count, save change to post.
-        return redirect('/')
+        messages.info(request, 'Applause added.')
+        return redirect(request.META['HTTP_REFERER'])
     else:
         # if applause already exists:
         applause_filter.delete()
@@ -314,4 +316,5 @@ def post_applause(request):
         # must want to unlike the post
         post.no_of_applause = post.no_of_applause-1
         post.save()
-        return redirect('/')
+        messages.info(request, 'Applause removed.')
+        return redirect(request.META['HTTP_REFERER'])
