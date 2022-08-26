@@ -130,7 +130,7 @@ def profile(request, pk):
     num_user_posts = len(posts)
 
     history_items = HistoryItem.objects.filter(
-        user=user_object).order_by('year')
+        user=user_object).order_by('-year')
     YEAR_CHOICES = reversed(
         [(y, y)for y in range(1950, datetime.date.today().year+2)])
     # used to populate year select field with range 1950-present +2
