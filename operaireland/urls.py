@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('upper-circle/', admin.site.urls),
     path('', include('socialnetwork.urls')),
 ]
 
