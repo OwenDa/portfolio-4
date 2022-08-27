@@ -80,8 +80,8 @@
                             <label for="avatar-upload">Avatar </label>
                         </div>
                         <div class="col-12">
-                            <img width="120" height="auto" src="{{ user_profile.avatar.url }}"/>
-                            <input class="mt-1 mb-1 form-control" type="file" name="avatar" id="avatar-upload" value="">
+                            <img width="120" height="auto" src="{{ user_profile.avatar.url }}" alt="Current avatar image"/>
+                            <input class="mt-1 mb-1 form-control" type="file" name="avatar" id="avatar-upload" value="" aria-label="Upload image file">
                         </div>
                     </div>
 

@@ -39,7 +39,9 @@ While many future features may yet be implemented, the general design could also
   + edit details within my profile so that it can function as an accurate, up-to-date CV or portfolio for others to see (see [Epic](#epic-user-profile)).
   + add a new post in order to promote myself or others, and add to the site content.
   + view another user’s profile in order to get an overview of their portfolio to-date.
-  + 
+
+These functions should also be available to users employing a screen reader. See [Accessibility Testing](#accessibility-testing).
+
 
 ### Epic: User Profile
 **Primary Features:**  
@@ -122,7 +124,7 @@ The diagram below demonstrates the relationships between the project's models (d
 
 <a href="https://dbdiagram.io/d/6307eb52f1a9b01b0fe647c5" target=_blank aria-label="Click to open Entity Relationship Diagram in more detail"><img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661468780/static/images/readme/opera-ireland-erd_hp5zzl.png" alt="Entity Relationship Diagram for the Opera Ireland site as of August 2022." width="100%" height="auto"></a>
 
-<details><summary>Cllick to view as DBML code</summary>
+<details><summary>Click to view as DBML code</summary>
 
 ```
   //// -- ERD for Opera Ireland
@@ -361,6 +363,22 @@ For testing the contrast level of the various background and font colours used, 
 
 The developer manually tested to ensure that all features can be navigated via keyboard.
 
+NVDA, a freely available screen reader, was used to test for the screen reader functions. The following User Story formed the basis of these tests. As can be seen, one sub-task remains unfulfilled and led to the addition of user-created ALT text as a [Future Feature](#future-features).
+
+> As a **user employing a screenreader such as NVDA**, I can **successfully navigate the site** in order to **enjoy and make use of its content**.
+>
+> Acceptance Criteria: Functional navigation and/or use of:
+> 
+> - [x] Sign in page content, links, inputs and alerts
+> - [x] Sign up page content, links, inputs and alerts
+> - [x] Index page (Post Feed) content, links, inputs and alerts
+>  + [ ] User-uploaded images (see future features)
+> - [x] New Post modal inputs, prompts and functions
+> - [x] Settings content, links, inputs, alerts and functions
+> - [x] Profile page content, links, alerts and functions
+> - [x] Navigation, as checked in previous tests
+  
+  
 ### Validators & Tools 
 
 JavaScript code was run through [jsvalidator.com](https://jsvalidator.com/) with no errors or warnings.  
@@ -394,7 +412,10 @@ Click to Expand: Deployment Procedure
 </summary></br>  
   
 ### Heroku  
-The site was deployed to Heroku using the following procedure. Before beginning, ensure that requirements.txt is up to date.    
+The site was deployed to Heroku using the following procedure. Before beginning, ensure that requirements.txt is up to date.  
+  
+Similarly, ensure that ``DEBUG = False` in settings.py, and the developer also suggests running `$ python3 manage.py check --deploy` before deployment.
+  
 1. An account must first be created on [Heroku.com](https://www.heroku.com/)  
 2. Once logged in, select "Create new app".  
 3. The app must then be given a unique name and the developer's region must be selected from a list of options.  
