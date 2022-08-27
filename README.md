@@ -289,6 +289,8 @@ An additional account type, that of "Venue" could be added, allowing operatic ve
 
 Significant improvements might be made by allowing users to add ALT text to their own images, and some aspects of styling warrant further revision at a later stage.
   
+Error 404 and 500 pages could be made more informative or request specific.
+  
 ## Testing  
 ### Manual Testing  
 In large part, testing was carried out manually through the development process, checking that each function worked as expected and checking whether various user behaviours or choices were appropriately handled.  
@@ -363,7 +365,7 @@ For testing the contrast level of the various background and font colours used, 
 
 The developer manually tested to ensure that all features can be navigated via keyboard.
 
-NVDA, a freely available screen reader, was used to test for the screen reader functions. The following User Story formed the basis of these tests. As can be seen, one sub-task remains unfulfilled and led to the addition of user-created ALT text as a [Future Feature](#future-features).
+[NVDA](https://www.nvaccess.org/download/), a freely available screen reader, was used to test for the screen reader functions. The following User Story formed the basis of these tests. As can be seen, one sub-task remains unfulfilled and led to the addition of user-created ALT text as a [Future Feature](#future-features).
 
 > As a **user employing a screenreader such as NVDA**, I can **successfully navigate the site** in order to **enjoy and make use of its content**.
 >
@@ -440,7 +442,7 @@ The text content of new posts containing inappropriate file types (e.g. PDF) is 
 2. Exceedingly long file names can cause an error.
 
 ## Acknowledgements 
-1. Screenshot images were compressed with [TinyPNG.com](https://tinypng.com/)
+1. Screenshot images were compressed with [TinyPNG.com](https://tinypng.com/) and [CompressJPEG.com](https://compressjpeg.com/).
 2. Large credit is due to [this tutorial](https://youtu.be/xSUm6iMtREA), however much the end-result of the project may differ from the examples shown.
 3. Equally, [Code Institute](https://codeinstitute.net)'s Django tutorials are owed significant credit.
 4. [Coolers.co](https://coolors.co) was used as described in the [Design Statement](#design-statement).
@@ -452,6 +454,7 @@ The text content of new posts containing inappropriate file types (e.g. PDF) is 
  11. [dbdiagram.io](https://dbdiagram.io/docs) was used to create the [ERD above](#database-structure).
  12. Credit to [Stackoverflow thread](https://stackoverflow.com/questions/17662928/
     django-creating-a-custom-500-404-error-page) for insight on the creation of 404 and 500 handler functions.
+13. [NVDA](https://www.nvaccess.org/download/) was used for screen reader testing.
  
 ### Image Credits:
 1. ["Áine Murphy" profile avatar (user1)](https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/ "https://www.pexels.com/photo/smiling-woman-wearing-earrings-and-black-collared-top-1197132/"): Photo by Anderson Guerra:  
