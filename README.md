@@ -1,6 +1,6 @@
 # Opera Ireland  
 *Opera Ireland* is a portfolio site with social networking features for performers, service providers and other professionals working in the operatic field on the island of Ireland.
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344459/static/images/responsive-profile_1_kjw3kj.png" alt="Opera Ireland users can personalise their profiles to display their professional academic achievements, alongside links to other platforms and their latest posts" width="75%" height="auto">
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344463/static/images/readme/responsive-profile_1_kjw3kj.png" alt="Opera Ireland users can personalise their profiles to display their professional academic achievements, alongside links to other platforms and their latest posts" width="75%" height="auto">
 
 ## Contents
 1. [Problem Statement](#problem-statement)  
@@ -11,7 +11,8 @@
     + [Future Features](#future-features)
 6. [Testing](#testing)
 7. [Deployment](#deployment)  
-8. [Acknowledgements](#acknowledgements)  
+8. [Known Bugs](#known-bugs)
+9. [Acknowledgements](#acknowledgements)  
   
 ## Problem Statement  
 A niche industry, the operatic community in Ireland currently has no dedicated portfolio display site or central social network.
@@ -19,9 +20,9 @@ A niche industry, the operatic community in Ireland currently has no dedicated p
 Opera Ireland provides the user with a unique profile page and url to display a timeline of their professional and academic achievements, as well sharing links to their online presence elsewhere, such a professional website, Youtube channel, social media profiles and so on. In addition, the site has many features associated with social networking, such as the ability to view posts from other users in one feed, displaying the latest posts first.
 
 While many future features may yet be implemented, the general design could also be implemented to serve other niche communities with only minor adaptations.
-  
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661303645/static/images/about-image_1_vqj6mp.jpg" alt="Opera Ireland users can create and view posts, personalise their profiles and display their professional academic achievements" width="75%" height="auto">
-  
+   
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661303645/static/images/readme/about-image_1_vqj6mp.jpg" alt="Opera Ireland users can create and view posts, personalise their profiles and display their professional academic achievements" width="75%" height="auto">
+   
 ## User Stories  
   **Types of User** 
   + Vocal Performers 
@@ -103,21 +104,21 @@ Bootstrap 4 was chosen, over Bootstrap 5, for use with jQuery and support IE 10 
 Wireframe sketches were drawn up in Balsamiq. These reflect basic layout considerations rather than aesthetics.
 
 *Profile Page Wireframe*
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/New_Wireframe_1_copy_2_w8lxso.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/readme/New_Wireframe_1_copy_2_w8lxso.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
 
 *Post Feed Wireframe*
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/New_Wireframe_1_copy_k286tk.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/readme/New_Wireframe_1_copy_k286tk.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
 
 *Settings Page Wireframe*
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/New_Wireframe_1_copy_3_nyv3mw.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/readme/New_Wireframe_1_copy_3_nyv3mw.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
 
 *Sign Up & Sign In Pages Wireframe*
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/New_Wireframe_1_cjf6yn.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/readme/New_Wireframe_1_cjf6yn.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
 
 ### Database Structure
 The diagram below demonstrates the relationships between the project's models (database tables). This was written in DBML (Database Markup Language) with the aid of [dbdiagram.io](https://dbdiagram.io/docs) which provides some useful animations that lend additional context to the diagram. Click the image below to view the animated version in a new tab:
 
-<a href="https://dbdiagram.io/d/6307eb52f1a9b01b0fe647c5" target=_blank aria-label="Click to open Entity Relationship Diagram in more detail"><img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661468780/static/images/opera-ireland-erd_hp5zzl.png" alt="Entity Relationship Diagram for the Opera Ireland site as of August 2022." width="100%" height="auto"></a>
+<a href="https://dbdiagram.io/d/6307eb52f1a9b01b0fe647c5" target=_blank aria-label="Click to open Entity Relationship Diagram in more detail"><img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661468780/static/images/readme/opera-ireland-erd_hp5zzl.png" alt="Entity Relationship Diagram for the Opera Ireland site as of August 2022." width="100%" height="auto"></a>
 
 <details><summary>Cllick to view as DBML code</summary>
 
@@ -209,21 +210,21 @@ The diagram below demonstrates the relationships between the project's models (d
 
 Opera Ireland is fully responsive and can be enjoyed on a wide range of devices. The site and its content will adapt to create the best user experience.
 
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344459/static/images/responsive-profile_1_kjw3kj.png" alt="Fully responsive profile page shown on screen emulators of varying sizes" width="75%" height="auto">
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344463/static/images/readme/responsive-profile_1_kjw3kj.png" alt="Fully responsive profile page shown on screen emulators of varying sizes" width="75%" height="auto">
 
 ### Sign In & Sign Up
 
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344459/static/images/signup-responsive_1_qwogw1.png" alt="Fully responsive sign up page shown on screen emulators of varying sizes" width="75%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661348018/static/images/readme/signup-responsive_1_qwogw1.png" alt="Fully responsive sign up page shown on screen emulators of varying sizes" width="75%" height="auto">  
 
 Users can sign up to create an individual profile and access full site features. When signing up, the user is asked to create a username and informed that this will form part of their unique profile url.
 
 After signing up for the first time, the user is directed to their settings page, allowing them to customise their profile. After this initial log-in, all future log-ins will direct the user to the index page which houses the main post feed.
 
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344459/static/images/responsive-signin_1_szsqvt.png" alt="Fully responsive sign in page shown on screen emulators of varying sizes" width="75%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344459/static/images/readme/responsive-signin_1_szsqvt.png" alt="Fully responsive sign in page shown on screen emulators of varying sizes" width="75%" height="auto">  
 
 ### Post Feed
 
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661343875/static/images/screencapture-opera-ireland-herokuapp-2022-08-24-13_20_28-min_dqur7x.png" alt="Screenshot displaying the post feed populated with example posts from multiple example users." width="75%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661343875/static/images/readme/screencapture-opera-ireland-herokuapp-2022-08-24-13_20_28-min_dqur7x.png" alt="Screenshot displaying the post feed populated with example posts from multiple example users." width="75%" height="auto">  
 
 This feed is not curated and the site does not implement a "Follow" feature. This is an intentional omission and the feature is not likely to be added in the future. A niche community on a small island, the developer decided to take forum-like approach to the post feed, rather than the conventional curated approach used in most social networks. In the realm of social networks, this is similar to [Mastadon](https://joinmastodon.org/), for example, in which users of a particular instance can view feed which includes _all_ posts within that instance. [Mastadon](https://joinmastodon.org/) instances are, however, designed for those who already share an interest of some sort and can therefore be considered pre-curated, in a manner. This is the approach taken by Opera Ireland and for the very same reasons. An added benefit of this approach is that is encourages users to see and interact with posts from those whose work they may not already know or be familiar with.
 
@@ -231,7 +232,7 @@ While individual profiles can be viewed without logging in (allowing the user to
 
 ### Profile
 
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661341218/static/images/screencapture-opera-ireland-herokuapp-profile-user4-2022-08-24-01_38_54_1_cgidxm.png" alt="Opera Ireland users can personalise their profiles to display their professional academic achievements, alongside links to other platforms and their latest posts" width="75%" height="auto">
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661341218/static/images/readme/screencapture-opera-ireland-herokuapp-profile-user4-2022-08-24-01_38_54_1_cgidxm.png" alt="Opera Ireland users can personalise their profiles to display their professional academic achievements, alongside links to other platforms and their latest posts" width="75%" height="auto">
   
 The profile contains user-specific information which can be customised from the user's settings page, as well as the option to add a timeline of professional and academic achievements.
 
@@ -246,11 +247,11 @@ As can be seen from these example users, profile features include displaying bas
 
 Profiles are rendered differently according to whether the viewer is the profile-owner or not. For example, only profile owners can see controls to add/edit history items. Similarly, prior to profile customisation, the profile owner will see prompts to complete their profile, while other users see only empty or blank fields.
 
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661345428/static/images/user3-differing-views_1_stv5s2.png" alt="Comparison of profile-owner versus profile-viewer renderings of an incomplete profile" width="100%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661345428/static/images/readme/user3-differing-views_1_stv5s2.png" alt="Comparison of profile-owner versus profile-viewer renderings of an incomplete profile" width="100%" height="auto">  
   
 ### Settings
   
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661346664/static/images/profile-settingsview_1_b2oicf.png" alt="Profile settings page completed and incomplete." width="100%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661346664/static/images/readme/profile-settingsview_1_b2oicf.png" alt="Profile settings page completed and incomplete." width="100%" height="auto">  
   
 The user can customise their profile from their Settings page. Login is required for this feature as each settings page is related to its owners profile.
 
@@ -258,13 +259,13 @@ Two forms are included, one for basic profile details such as first and last nam
 
 ### Applause (Like Post)
    
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661347224/static/images/like-post_1_jossed.png" alt="Example post with 1 applause." width="75%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661347224/static/images/readme/like-post_1_jossed.png" alt="Example post with 1 applause." width="75%" height="auto">  
   
 Emulating the popular "Like" feature found in many such sites, Opera Ireland users can show appreciation for posts with the "applause" feature. Should the user change their mind, clicking or tapping the applause icon again will "unlike" the post.
 
 ### Create Post
   
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661347000/static/images/newpost_1_v2q7lb.png" alt="Create new post modal form" width="75%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661347000/static/images/readme/newpost_1_v2q7lb.png" alt="Create new post modal form" width="75%" height="auto">  
   
 A logged-in user can create a new post from any page on the site, using the "New Post" option on the navigation bar. Posts can feature text (required) and one image (optional). Should the user change their mind, this dialog can simply be closed.
 
@@ -282,20 +283,70 @@ Significant improvements might be made by allowing users to add ALT text to thei
 ## Testing  
 ### Manual Testing  
 In large part, testing was carried out manually through the development process, checking that each function worked as expected and checking whether various user behaviours or choices were appropriately handled.  
-
-For test cases, please visit the follow:
-  - [testing-urls.md](testing/testing-urls.md)
-  - [testing-signin-screen.md](testing/testing-signin-screen.md)
-  - [testing-signup-screen.md](testing/testing-signup-screen.md)
-  - [testing-navigation.md](testing/testing-navigation.md)
-  - [testing-new-post-modal.md](testing/testing-new-post-modal.md)
-  - [testing-post-feed.md](testing/testing-post-feed.md)
-  - [testing-posts.md](testing/testing-posts.md)
-  - [testing-settings-screen.md](testing/testing-settings-screen.md)
-  - [testing-profile-screen.md](testing/testing-profile-screen.md)
-  - [testing-other.md](testing/testing-other.md)
-
-
+  
+Click to expand and view latest test case results per module:  
+  
+<details><summary>
+URLs
+</summary></br>  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-urls-min_ivio42.jpg" alt="Test case table or tables." width="75%" height="auto"> 
+</details>
+  
+<details><summary>
+Sign in screen
+</summary></br>  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-sign-in-min_v0zpuj.jpg" alt="Test case table or tables." width="75%" height="auto"> 
+</details>
+  
+<details><summary>
+Sign up screen
+</summary></br>  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-sign-up-min_c3wyxt.jpg" alt="Test case table or tables." width="75%" height="auto">
+</details>
+  
+<details><summary>
+Navigation
+</summary></br>
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-navigation-min_zstzti.jpg" alt="Test case table or tables." width="75%" height="auto">
+</details>
+  
+<details><summary>
+New Post modal
+</summary></br>
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-new-post-modal-min_nnpkqv.jpg" alt="Test case table or tables." width="75%" height="auto"> 
+</details>
+  
+<details><summary>
+Post Feed
+</summary></br>
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-post-feed-min_sza7a9.jpg" alt="Test case table or tables." width="75%" height="auto"> 
+</details>
+  
+<details><summary>
+Posts
+</summary></br>
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-posts-min_rbw5k8.jpg" alt="Test case table or tables." width="75%" height="auto"> 
+</details>
+  
+<details><summary>
+Settings screen
+</summary></br>
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-settings-screen-min_qrmmgv.jpg" alt="Test case table or tables." width="75%" height="auto"> 
+</details>
+  
+<details><summary>
+Profile screen
+</summary></br>
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-profile-screen-min_kpfuie.jpg" alt="Test case table or tables." width="75%" height="auto"> 
+</details>
+  
+<details><summary>
+Other
+</summary></br>
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-other-min_f5pihr.jpg" alt="Test case table or tables." width="75%" height="auto"> 
+</details> 
+  
+  
 ### Accessibility Testing
 For testing the contrast level of the various background and font colours used, [Coolers.co](https://coolors.co/contrast-checker) was employed. The primary accent colour was found to possess good contrast at all sizes, while the secondary accent colour was found unsuitable for small text and better suited to larger text. This colour is used to highlight links throughout the site, most of which are large headings. 
 
@@ -323,10 +374,11 @@ The developer also reviewed any warnings concerning accessibility issues (namely
 
 Some aspects of the site hinder this score, such as non-unique aria-ids on posts; however, this is caused by multiple posts being rendered from a single template. Similarly, decorative images have empty alt tags but do make use of aria-label and aria-labelledby where logical.
 
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/mobile-signin-lighthouse_tddzoy.png" alt="Google's Lighthouse scores  for mobile view of signing page: Performance 69, Accessibility 97, Best Practice 92, SEO 91." width="50%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/mobile-signin-lighthouse_tddzoy.png"
+ alt="Google's Lighthouse scores  for mobile view of signing page: Performance 69, Accessibility 97, Best Practice 92, SEO 91." width="50%" height="auto">  
   
 Significant improvements might be made by allowing users to add ALT text to their own images, and certain heading-levels should be revised.
-
+  
 ## Deployment  
 <details><summary>
 Click to Expand: Deployment Procedure
