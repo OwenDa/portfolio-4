@@ -59,6 +59,8 @@ Within my own unique profile, I can...
 -   Edit/Delete external links for accuracy
 
 Tertiary features exist to be considered in later development under their own user stories and/or EPICs.
+
+User Stories and EPICs can be viewed in more detail on [the project's GitHub Project Board](https://github.com/OwenDa/portfolio-4/issues/).
   
 ## Tech Stack  
 1. Languages
@@ -270,19 +272,26 @@ Emulating the popular "Like" feature found in many such sites, Opera Ireland use
 A logged-in user can create a new post from any page on the site, using the "New Post" option on the navigation bar. Posts can feature text (required) and one image (optional). Should the user change their mind, this dialog can simply be closed.
 
 Once published, posts feature the post content, the author's avatar, full name if saved to their profile and username, all of which link to the author's profile. In addition, an "applause" icon and "applause" counter are shown. Where the viewer is the logged in user, posts also feature a Delete Post option.
+
+### Additional Features
+In addition, the site uses custom 404 and 500 handlers to present the user with a UI in keeping with the rest of the site (avoiding causing undue alarm or disorientation) and a link to return 'Home'. This is a link leads the logged-user to the post feed (index) and the logged-out user to the sign-in page.  
+  
+To reduce resource-wasting and potentially harmful bot traffic, the site's admin url has been customised.
   
 ### Future Features  
 In future, it would be ideal to add a search function which allows logged-in users to search for others by username or by role-type. It is with this latter function in mind that "role" must be chosen from a list rather than allowing user's to type freely; the aim is to generate more accurate results when the user searches for all profiles with the role-type "Soprano" for instance.
 
 Comments could be added to posts, allowing for a more social and conversational interaction.
 
-An additional account type, that of "Venue" could be added, allowing operatic venues to promote their productions on the site.
+An additional account type, that of "Venue" could be added, allowing operatic venues to promote related events on the site.
 
-Significant improvements might be made by allowing users to add ALT text to their own images.
+Significant improvements might be made by allowing users to add ALT text to their own images, and some aspects of styling warrant further revision at a later stage.
   
 ## Testing  
 ### Manual Testing  
 In large part, testing was carried out manually through the development process, checking that each function worked as expected and checking whether various user behaviours or choices were appropriately handled.  
+
+`python3 manage.py check --deploy` was also run.
   
 Click to expand and view latest test case results per module:  
   
@@ -404,8 +413,10 @@ Forking a repository does not create locally-stored copies of its files on your 
 </details>  
 
 ## Known Bugs
-1. New Post File Upload: Inappropriate file types are not currently handled with anything other than a Djano standard error page.
-
+1. New Post File Upload:  
+The text content of new posts containing inappropriate file types (e.g. PDF) is published; the invalid file is not published; however, there is no specific feedback to the user concerning this issue. Video files may cause Error 500. The field is clearly marked for images; however, appropriate feedback would be useful.  
+  
+2. Exceedingly long file names can cause an error.
 
 ## Acknowledgements 
 1. Screenshot images were compressed with [TinyPNG.com](https://tinypng.com/)
