@@ -289,13 +289,13 @@ An additional account type, that of "Venue" could be added, allowing operatic ve
 
 Significant improvements might be made by allowing users to add ALT text to their own images, and some aspects of styling warrant further revision at a later stage.
   
-Error 404 and 500 pages could be made more informative or request specific.
+Error 404 and 500 pages could be made more informative or request specific.  
+  
+URLs in user-uploaded links (social links section) currently require precise formatting (ie. must include 'https://' or 'http://') to be recognised as a url field. This allows for convenient validation, but it is not necessarily convenient for the user or particularly user-friendly. Future revisions should address this issue.
   
 ## Testing  
 ### Manual Testing  
 In large part, testing was carried out manually through the development process, checking that each function worked as expected and checking whether various user behaviours or choices were appropriately handled.  
-
-`python3 manage.py check --deploy` was also run.
   
 Click to expand and view latest test case results per module:  
   
@@ -358,6 +358,8 @@ Other
 </summary></br>
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-other-min_f5pihr.jpg" alt="Test case table or tables." width="75%" height="auto"> 
 </details> 
+  
+In addition to these, manual testing was carried out on basic Django admin functions, as well as the model-specific search capability, within the Django admin panel. 
   
   
 ### Accessibility Testing
@@ -440,6 +442,8 @@ Forking a repository does not create locally-stored copies of its files on your 
 The text content of new posts containing inappropriate file types (e.g. PDF) is published; the invalid file is not published; however, there is no specific feedback to the user concerning this issue. Video files may cause Error 500. The field is clearly marked for images; however, appropriate feedback would be useful.  
   
 2. Exceedingly long file names can cause an error.
+
+3. Though not strictly a 'bug', URLs in user-uploaded links (social links section) must be formatted in an overly precise manner (ie. must include 'https://; or 'http://') to be recognised as a url field. This allows for convenient validation, but it is not necessarily convenient for the user or particularly user-friendly. Future revisions should address this issue.
 
 ## Acknowledgements 
 1. Screenshot images were compressed with [TinyPNG.com](https://tinypng.com/) and [CompressJPEG.com](https://compressjpeg.com/).
