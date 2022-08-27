@@ -278,7 +278,7 @@ Once published, posts feature the post content, the author's avatar, full name i
 ### Additional Features
 In addition, the site uses custom 404 and 500 handlers to present the user with a UI in keeping with the rest of the site (avoiding causing undue alarm or disorientation) and a link to return 'Home'. This is a link leads the logged-user to the post feed (index) and the logged-out user to the sign-in page.  
   
-To reduce resource-wasting and potentially harmful bot traffic, the site's admin url has been customised.
+To reduce resource-wasting and potentially harmful bot traffic, the site's admin url has been customised. Within the admin panel, some basic search functionality has been enabled, allowing the admin to search for user profiles, for example, by username or other selected data.
   
 ### Future Features  
 In future, it would be ideal to add a search function which allows logged-in users to search for others by username or by role-type. It is with this latter function in mind that "role" must be chosen from a list rather than allowing user's to type freely; the aim is to generate more accurate results when the user searches for all profiles with the role-type "Soprano" for instance.

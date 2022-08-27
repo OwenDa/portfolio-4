@@ -22,9 +22,10 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('created_at', 'id',  'user', 'no_of_applause', )
     search_fields = ('user__username', 'created_at', 'id', )
 
+
 class PostApplauseAdmin(admin.ModelAdmin):
     list_display = ('post_id', 'username', )
-    search_fields = ('post_id', 'username', ) 
+    search_fields = ('post_id', 'username', )
 
 
 admin.site.register(Profile, ProfileAdmin)
