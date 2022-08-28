@@ -365,7 +365,7 @@ Profile screen
 <details><summary>
 Other
 </summary></br>
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661351122/static/images/readme/test-cases/test-other-min_f5pihr.jpg" alt="Test case table or tables." width="75%" height="auto"> 
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661650143/static/images/readme/test-cases/test-other_yjavjb.jpg" alt="Test case table or tables." width="75%" height="auto"> 
 </details> 
   
 In addition to these, manual testing was carried out on basic Django admin functions, as well as the model-specific search capability, within the Django admin panel. 
