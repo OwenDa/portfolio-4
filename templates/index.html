@@ -3,6 +3,24 @@
 {% load paginate %}
 
 {% block content %}
+<!-- Search bar -->
+<section class="container-fluid mt-2">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-10 col-md-6">
+            {% if user.is_authenticated %}
+            <form action="/search" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-1 mt-1">
+                    <input type="text" class="form-control" name="query" placeholder="Search for users" aria-label="Search users by username" required>
+                    <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!-- End of search and add post panel -->
 <main>
     <div class="container">
         <div class="row">
@@ -12,7 +30,7 @@
             {% endfor %}
             <div class="col-12 my-2 d-flex justify-content-between">
                 {% show_pageitems %}<span id="pagination-nav">{% show_pages %}</span>
-                </div>
+            </div>
         </div>
     </div>
 </main>

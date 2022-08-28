@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .models import (Profile,
                      SocialLink, HistoryItem, Post, PostApplause)
 from .forms import SocialLinkForm, HistoryItemForm
+from itertools import chain
 
 
 @login_required(login_url='signin')
@@ -338,3 +339,50 @@ def handle_500():
     """
     response = render_to_response('500.html')
     return response
+
+
+@login_required(login_url='signin')
+def search(request):
+    """
+    Search function currently only allows for search by username;
+    radio button selection in form (search by: role / username) and
+    adaptation of following code could allow for search by role in future.
+    """
+    user_object = User.objects.get(username=request.user.username)
+    # identify user making request
+    user_profile = Profile.objects.get(user=user_object)
+    # identify profile related to same.
+    # Necessary to render base.html on search.html
+
+    if request.method == 'POST':
+        query = request.POST['query']
+        queryset = User.objects.filter(
+            username__icontains=query)[:25]
+        # Filter through User objects for those in which the username contains
+        # (icontains generates SQL query equivalent to 'LIKE') query.
+        # Up to 25 results displayed per search for time being.
+        # Future dev note: IF statement could treat queryset differently
+        # according to radio button selection in form.
+
+        user_id_fetcher = []
+        # empty lists to populate with for loop below
+        for user in queryset:
+            user_id_fetcher.append(user.id)
+        # append all filtered user's ids to user_id_fetcher
+
+        results = []
+        # empty list to populate with for loop below
+        for ids in user_id_fetcher:
+            profile_fetcher = Profile.objects.filter(id_user=ids)
+            # loop through user ids and pair to profile by Profile.id_user
+            results.append(profile_fetcher)
+            # add fetched profiles to results list
+
+        results = list(chain(*results))
+
+        context = {
+            'user_profile': user_profile,
+            'results': results,
+            'query': query}
+
+    return render(request, 'search.html', context)

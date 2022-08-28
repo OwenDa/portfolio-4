@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load paginate %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-10 offest-1">
+            <h2>Results for <b>{{query}}</b></span>: </h2>
+            <div class="col-md-9">
+                {% if results|length > 0 %}
+                    {% for result in results %}
+                    <div class="mb-4">
+                        <div class="card mt-4 mb-2 shadow rounded container px-0">
+                            <!-- ROW 1 -->
+                            <a href="/profile/{{result.user}}" aria-label="Open profile of {{result.user}}">
+                                <div class="card-header row align-items-center mx-0 px-1">
+                                    <div class="col-4 col-md-3 col-lg-2">
+                                        <img src="{{ result.avatar.url }}" class="post-avatar avatar img-fluid"
+                                            aria-labelledby="user-full-name" alt="">
+                                    </div>
+                                    <div class="col-8 col-md-9 col-lg-10">
+                                        <div class="row d-flex justify-content-between">
+                                            <h5 id="user-full-name">{{ result.first_name }} {{ result.last_name }}</h5>
+                                            <h5 class="text-right mr-4"> @{{ result.user }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- ROW 2 (Bio) -->
+                            <div class="card-body px-xs-2 px-s-3">
+                                <p class="card-text">{{ result.bio }}</p>
+                            </div>
+                            <div class="card-footer mx-0 row align-items-center justify-content-between">
+                                <p class="card-text col-12 col-md-8 my-0">{% if result.location is not None %}{{ result.location }}{% endif %}</p>
+                                <p class="card-text col-12 col-md-4 text-md-right">{% if result.role is not None %}{{ result.role|title }}{% endif %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="row pt-4">
+                        <p class="col-10 offset-1 px-0">Up to 25 results may be shown.</p>
+                    </div>
+                {% else %}
+                <div class="row pt-4">
+                    <h2 class="col-10 offset-1">No Results.</h2>
+                    <h3 class="col-10 offset-1">Return to <a href="{% url 'index' %}">Home Page</a>?</h3>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

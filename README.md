@@ -274,14 +274,19 @@ Emulating the popular "Like" feature found in many such sites, Opera Ireland use
 A logged-in user can create a new post from any page on the site, using the "New Post" option on the navigation bar. Posts can feature text (required) and one image (optional). Should the user change their mind, this dialog can simply be closed.
 
 Once published, posts feature the post content, the author's avatar, full name if saved to their profile and username, all of which link to the author's profile. In addition, an "applause" icon and "applause" counter are shown. Where the viewer is the logged in user, posts also feature a Delete Post option.
+  
+### Search Users
+Logged-in users can make use of a search bar on the homepage (post feed) to search for other users by username. This allows users to find one another more easily and to check in on profiles of particular interest them, given the lack of any Follower feature, this may be particularly useful.
 
+Search results are currently limited to 25 results. This is for efficiency given the large number of results that could potentially be returned. Where no result is found, the user is informed and offered a link back to the homepage. This feature is written in a manner that should allow for relatively easy adaptation in later development, enabling users to search by other fields, such as 'role'.
+  
 ### Additional Features
 In addition, the site uses custom 404 and 500 handlers to present the user with a UI in keeping with the rest of the site (avoiding causing undue alarm or disorientation) and a link to return 'Home'. This is a link leads the logged-user to the post feed (index) and the logged-out user to the sign-in page.  
   
 To reduce resource-wasting and potentially harmful bot traffic, the site's admin url has been customised. Within the admin panel, some basic search functionality has been enabled, allowing the admin to search for user profiles, for example, by username or other selected data.
   
 ### Future Features  
-In future, it would be ideal to add a search function which allows logged-in users to search for others by username or by role-type. It is with this latter function in mind that "role" must be chosen from a list rather than allowing user's to type freely; the aim is to generate more accurate results when the user searches for all profiles with the role-type "Soprano" for instance.
+In future, it would be ideal to expand the search function to allow logged-in users to search for others by role-type. It is with this latter function in mind that "role" must be chosen from a list rather than allowing user's to type freely; the aim is to generate more accurate results when the user searches for all profiles with the role-type "Soprano" for instance.
 
 Comments could be added to posts, allowing for a more social and conversational interaction.
 
@@ -444,10 +449,11 @@ The text content of new posts containing inappropriate file types (e.g. PDF) is 
 2. Exceedingly long file names can cause an error.
 
 3. Though not strictly a 'bug', URLs in user-uploaded links (social links section) must be formatted in an overly precise manner (ie. must include 'https://; or 'http://') to be recognised as a url field. This allows for convenient validation, but it is not necessarily convenient for the user or particularly user-friendly. Future revisions should address this issue.
+  
 
 ## Acknowledgements 
 1. Screenshot images were compressed with [TinyPNG.com](https://tinypng.com/) and [CompressJPEG.com](https://compressjpeg.com/).
-2. Large credit is due to [this tutorial](https://youtu.be/xSUm6iMtREA), however much the end-result of the project may differ from the examples shown.
+2. Large credit is due to [this tutorial](https://youtu.be/xSUm6iMtREA), however much the end-result of the project may differ from the examples shown. In particulr, the search function owes significant credit to the information and explanations provided within.
 3. Equally, [Code Institute](https://codeinstitute.net)'s Django tutorials are owed significant credit.
 4. [Coolers.co](https://coolors.co) was used as described in the [Design Statement](#design-statement).
 6. [Stack Overflow](https://stackoverflow.com/) was consulted several times in troubleshooting, but special thanks is owed to user [SamSparkx](https://stackoverflow.com/users/18799377/samsparx) for assistance given in answer to [this question](https://stackoverflow.com/questions/73439361/how-do-i-access-objects-user-info-across-django-models-foreign-key-beginner/73440194#73440194).
