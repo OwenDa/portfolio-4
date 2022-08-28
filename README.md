@@ -1,7 +1,7 @@
 # Opera Ireland  
 *Opera Ireland* is a portfolio site with social networking features for performers, service providers and other professionals working in the operatic field on the island of Ireland.
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344463/static/images/readme/responsive-profile_1_kjw3kj.png" alt="Opera Ireland users can personalise their profiles to display their professional academic achievements, alongside links to other platforms and their latest posts" width="75%" height="auto">
-
+  
 ## Contents
 1. [Problem Statement](#problem-statement)  
 2. [User Stories](#user-stories)
@@ -42,7 +42,7 @@ While many future features may yet be implemented, the general design could also
 
 These functions should also be available to users employing a screen reader. See [Accessibility Testing](#accessibility-testing).
 
-
+  
 ### Epic: User Profile
 **Primary Features:**  
 _Acceptance Criteria:_
@@ -118,7 +118,7 @@ Wireframe sketches were drawn up in Balsamiq. These reflect basic layout conside
 
 *Sign Up & Sign In Pages Wireframe*
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661369932/static/images/readme/New_Wireframe_1_cjf6yn.png" alt="Colourful wireframe demonstrating the intended layout of the Profile page." width="75%" height="auto">
-
+  
 ### Database Structure
 The diagram below demonstrates the relationships between the project's models (database tables). This was written in DBML (Database Markup Language) with the aid of [dbdiagram.io](https://dbdiagram.io/docs) which provides some useful animations that lend additional context to the diagram. Click the image below to view the animated version in a new tab:
 
@@ -209,13 +209,13 @@ The diagram below demonstrates the relationships between the project's models (d
 
     
 ## Features  
-
+  
 ### Responsive Design
 
 Opera Ireland is fully responsive and can be enjoyed on a wide range of devices. The site and its content will adapt to create the best user experience.
 
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344463/static/images/readme/responsive-profile_1_kjw3kj.png" alt="Fully responsive profile page shown on screen emulators of varying sizes" width="75%" height="auto">
-
+  
 ### Sign In & Sign Up
 
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661348018/static/images/readme/signup-responsive_1_qwogw1.png" alt="Fully responsive sign up page shown on screen emulators of varying sizes" width="75%" height="auto">  
@@ -225,21 +225,21 @@ Users can sign up to create an individual profile and access full site features.
 After signing up for the first time, the user is directed to their settings page, allowing them to customise their profile. After this initial log-in, all future log-ins will direct the user to the index page which houses the main post feed.
 
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661344459/static/images/readme/responsive-signin_1_szsqvt.png" alt="Fully responsive sign in page shown on screen emulators of varying sizes" width="75%" height="auto">  
-
+  
 ### Post Feed
 
-<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661343875/static/images/readme/screencapture-opera-ireland-herokuapp-2022-08-24-13_20_28-min_dqur7x.png" alt="Screenshot displaying the post feed populated with example posts from multiple example users." width="75%" height="auto">  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661648834/static/images/readme/index-with-search_w2ecwr.png" alt="Screenshot displaying the post feed populated with example posts from multiple example users." width="75%" height="auto">  
 
 This feed is not curated and the site does not implement a "Follow" feature. This is an intentional omission and the feature is not likely to be added in the future. A niche community on a small island, the developer decided to take forum-like approach to the post feed, rather than the conventional curated approach used in most social networks. In the realm of social networks, this is similar to [Mastadon](https://joinmastodon.org/), for example, in which users of a particular instance can view feed which includes _all_ posts within that instance. [Mastadon](https://joinmastodon.org/) instances are, however, designed for those who already share an interest of some sort and can therefore be considered pre-curated, in a manner. This is the approach taken by Opera Ireland and for the very same reasons. An added benefit of this approach is that is encourages users to see and interact with posts from those whose work they may not already know or be familiar with.
 
 While individual profiles can be viewed without logging in (allowing the user to harness their profile link as a promotional tool), the post feed and other site features require the user to have created an account and be logged in. This is intended is intended to strike a balance between promotion and keeping the site's features and content limited to its registered users.
-
+  
 ### Profile
 
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661341218/static/images/readme/screencapture-opera-ireland-herokuapp-profile-user4-2022-08-24-01_38_54_1_cgidxm.png" alt="Opera Ireland users can personalise their profiles to display their professional academic achievements, alongside links to other platforms and their latest posts" width="75%" height="auto">
   
 The profile contains user-specific information which can be customised from the user's settings page, as well as the option to add a timeline of professional and academic achievements.
-
+  
 #### Example Profiles:
 -	[User1](https://opera-ireland.herokuapp.com/profile/user1)
 -	[User2](https://opera-ireland.herokuapp.com/profile/user2)
@@ -260,13 +260,13 @@ Profiles are rendered differently according to whether the viewer is the profile
 The user can customise their profile from their Settings page. Login is required for this feature as each settings page is related to its owners profile.
 
 Two forms are included, one for basic profile details such as first and last name, avatar, bio, location and so on. This form also features a reminder to the user of their personal url (/profile/username). The second form allows the user to add or remove external links.
-
+  
 ### Applause (Like Post)
    
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661347224/static/images/readme/like-post_1_jossed.png" alt="Example post with 1 applause." width="75%" height="auto">  
   
 Emulating the popular "Like" feature found in many such sites, Opera Ireland users can show appreciation for posts with the "applause" feature. Should the user change their mind, clicking or tapping the applause icon again will "unlike" the post.
-
+  
 ### Create Post
   
 <img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661347000/static/images/readme/newpost_1_v2q7lb.png" alt="Create new post modal form" width="75%" height="auto">  
@@ -275,9 +275,12 @@ A logged-in user can create a new post from any page on the site, using the "New
 
 Once published, posts feature the post content, the author's avatar, full name if saved to their profile and username, all of which link to the author's profile. In addition, an "applause" icon and "applause" counter are shown. Where the viewer is the logged in user, posts also feature a Delete Post option.
   
-### Search Users
+### Search Users 
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661648826/static/images/readme/search-results_pokorb.jpg" alt="Example of search results" width="75%" height="auto">  
+  
 Logged-in users can make use of a search bar on the homepage (post feed) to search for other users by username. This allows users to find one another more easily and to check in on profiles of particular interest them, given the lack of any Follower feature, this may be particularly useful.
-
+  
+<img src="https://res.cloudinary.com/cloud9wastaken/image/upload/v1661648826/static/images/readme/no-results_nkshgp.jpg" alt="Example of null results as described below." width="75%" height="auto"> 
 Search results are currently limited to 25 results. This is for efficiency given the large number of results that could potentially be returned. Where no result is found, the user is informed and offered a link back to the homepage. This feature is written in a manner that should allow for relatively easy adaptation in later development, enabling users to search by other fields, such as 'role'.
   
 ### Additional Features
@@ -298,6 +301,7 @@ Error 404 and 500 pages could be made more informative or request specific.
   
 URLs in user-uploaded links (social links section) currently require precise formatting (ie. must include 'https://' or 'http://') to be recognised as a url field. This allows for convenient validation, but it is not necessarily convenient for the user or particularly user-friendly. Future revisions should address this issue.
   
+
 ## Testing  
 ### Manual Testing  
 In large part, testing was carried out manually through the development process, checking that each function worked as expected and checking whether various user behaviours or choices were appropriately handled.  
@@ -385,6 +389,7 @@ The developer manually tested to ensure that all features can be navigated via k
 > - [x] New Post modal inputs, prompts and functions
 > - [x] Settings content, links, inputs, alerts and functions
 > - [x] Profile page content, links, alerts and functions
+> - [x] Search page content and links
 > - [x] Navigation, as checked in previous tests
   
   
@@ -435,13 +440,13 @@ Similarly, ensure that ``DEBUG = False` in settings.py, and the developer also s
 8. Choose either "Automatic deploys" or "Manual deploy". In this case, the developer opted for manual deploy for the initial deployment and, having verified that deployment was successful, enabled automatic deploys thereafter.  
 9. Select the appropriate branch from which to deploy (in this case, the project had only the Main branch at the time of deployment).
 
-
+  
 ### Forking & Cloning Repositories  
 Forking a repository allows one to make a copy with which to experiment without affecting or jeopardising the original. This does not require any special permissions from or direct contact with the original developer provided the repository in question is public rather than private. You may wish to do this either to experiment with and learn from another party's code or aid in improving an open-source project by offering changes (note that forking is distinct from [branching](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)). To do this, one must have a GitHub account and be logged in. Then, simply visit the main page of the repository in question, and select the "Fork" option located in the upper-right corner (desktop) as shown in the image below. [Learn more about forks from GitHub Docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).  
 
 Forking a repository does not create locally-stored copies of its files on your computer. To achieve this, you will also need to Clone the repository. For example, you may wish to do this if you wish to have a functioning copy of another party's code in under to compile and execute it locally. Cloning options are found under the "Code" drop-down button of a repository's main page, as shown in the image below. [Learn more about cloning from GitHub Docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#cloning-your-forked-repository).  
 </details>  
-
+  
 ## Known Bugs
 1. New Post File Upload:  
 The text content of new posts containing inappropriate file types (e.g. PDF) is published; the invalid file is not published; however, there is no specific feedback to the user concerning this issue. Video files may cause Error 500. The field is clearly marked for images; however, appropriate feedback would be useful.  
@@ -450,7 +455,7 @@ The text content of new posts containing inappropriate file types (e.g. PDF) is 
 
 3. Though not strictly a 'bug', URLs in user-uploaded links (social links section) must be formatted in an overly precise manner (ie. must include 'https://; or 'http://') to be recognised as a url field. This allows for convenient validation, but it is not necessarily convenient for the user or particularly user-friendly. Future revisions should address this issue.
   
-
+  
 ## Acknowledgements 
 1. Screenshot images were compressed with [TinyPNG.com](https://tinypng.com/) and [CompressJPEG.com](https://compressjpeg.com/).
 2. Large credit is due to [this tutorial](https://youtu.be/xSUm6iMtREA), however much the end-result of the project may differ from the examples shown. In particulr, the search function owes significant credit to the information and explanations provided within.
